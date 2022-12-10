@@ -1,0 +1,14 @@
+{
+  "name": "zepp-improved-api",
+  "version": "1.0.0",
+  "description": "A library that streamlines calls to Zepp devices.",
+  "main": "index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "tytydraco",
+  "license": "BSD-2-Clause",
+  "devDependencies": {
+    "zeppos-device-types-v1": "^1.0.0"
+  }
+}
