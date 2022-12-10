@@ -1,4 +1,4 @@
-import { Callback, Listener } from "../callback"
+import { Cancellable } from "../cancellable"
 
 export class Distance {
     private sensor = hmSensor.createSensor(hmSensor.id.DISTANCE)
@@ -7,7 +7,7 @@ export class Distance {
         return this.sensor.current
     }
 
-    onDistanceChange(callback: Callback): Listener {
+    onDistanceChange(callback: () => void): Cancellable {
         this.sensor.addEventListener(hmSensor.event.CHANGE, callback)
 
         return {

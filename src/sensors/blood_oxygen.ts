@@ -1,4 +1,4 @@
-import { Callback, Listener } from "../callback"
+import { Cancellable } from "../cancellable"
 
 export class BloodOxygen {
     private sensor = hmSensor.createSensor(hmSensor.id.SPO2)
@@ -27,7 +27,7 @@ export class BloodOxygen {
         this.sensor.stop()
     }
 
-    onBloodOxygenChange(callback: Callback): Listener {
+    onBloodOxygenChange(callback: () => void): Cancellable {
         this.sensor.addEventListener(hmSensor.event.CHANGE, callback)
 
         return {

@@ -1,4 +1,4 @@
-import { Callback, Listener } from "../callback"
+import { Cancellable } from "../cancellable"
 
 export class HeartRate {
     private sensor = hmSensor.createSensor(hmSensor.id.HEART)
@@ -15,7 +15,7 @@ export class HeartRate {
         return this.sensor.today
     }
 
-    onBpmChange(callback: Callback): Listener {
+    onBpmChange(callback: () => void): Cancellable {
         this.sensor.addEventListener(hmSensor.event.CURRENT, callback)
 
         return {
@@ -25,7 +25,7 @@ export class HeartRate {
         }
     }
 
-    onLastBpmChange(callback: Callback): Listener {
+    onLastBpmChange(callback: () => void): Cancellable {
         this.sensor.addEventListener(hmSensor.event.LAST, callback)
 
         return {

@@ -1,7 +1,7 @@
-import { Callback, Listener } from "../callback";
+import { Cancellable } from "../cancellable";
 
 export namespace Scheduling {
-    export function createAlarm(appId: number, pagePath?: string, date?: Date, delayMilliseconds?: number, createParameters?: string): Listener {
+    export function createAlarm(appId: number, pagePath?: string, date?: Date, delayMilliseconds?: number, createParameters?: string): Cancellable {
         const alarmId = hmApp.alarmNew({
             appId: appId,
             url: pagePath,
@@ -17,7 +17,7 @@ export namespace Scheduling {
         }
     }
 
-    export function createTimer(delayMilliseconds: number, repeatMilliseconds: number, callback: Callback): Listener {
+    export function createTimer(delayMilliseconds: number, repeatMilliseconds: number, callback: () => void): Cancellable {
         const timerId = timer.createTimer(delayMilliseconds, repeatMilliseconds, callback, null)
 
         return {

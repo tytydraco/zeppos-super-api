@@ -1,4 +1,4 @@
-import { Callback, Listener } from "../callback"
+import { Cancellable } from "../cancellable"
 
 export class Music {
     private sensor = hmSensor.createSensor(hmSensor.id.MUSIC)
@@ -39,7 +39,7 @@ export class Music {
         this.sensor.audNext()
     }
 
-    onMusicChange(callback: Callback): Listener {
+    onMusicChange(callback: () => void): Cancellable {
         this.sensor.addEventListener(hmSensor.event.CHANGE, callback)
 
         return {

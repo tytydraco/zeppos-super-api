@@ -1,5 +1,5 @@
 import { Locale } from "../settings/locale";
-import { Callback, Listener } from "../callback";
+import { Cancellable } from "../cancellable";
 
 export class Clock {
     private sensor = hmSensor.createSensor(hmSensor.id.TIME)
@@ -76,7 +76,7 @@ export class Clock {
         return this.sensor.getShowFestival()
     }
 
-    onEndOfMinute(callback: Callback): Listener {
+    onEndOfMinute(callback: () => void): Cancellable {
         this.sensor.addEventListener(hmSensor.event.MINUTEEND, callback)
 
         return {
@@ -86,7 +86,7 @@ export class Clock {
         }
     }
 
-    onEndOfDay(callback: Callback): Listener {
+    onEndOfDay(callback: () => void): Cancellable {
         this.sensor.addEventListener(hmSensor.event.DAYCHANGE, callback)
 
         return {

@@ -1,4 +1,4 @@
-import { Callback, Listener } from "../callback"
+import { Cancellable } from "../cancellable"
 
 export class Battery {
     private sensor = hmSensor.createSensor(hmSensor.id.BATTERY)
@@ -7,7 +7,7 @@ export class Battery {
         return this.sensor.current
     }
 
-    onLevelChange(callback: Callback): Listener {
+    onLevelChange(callback: () => void): Cancellable {
         this.sensor.addEventListener(hmSensor.event.CHANGE, callback)
 
         return {

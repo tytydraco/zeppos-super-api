@@ -1,7 +1,7 @@
-import { Listener } from "../callback";
+import { Cancellable } from "../cancellable";
 
 export namespace Bluetooth {
-    export function connect(callback: (subpackageIndex?: number, data?: object, dataSize?: number) => void): Listener {
+    export function connect(callback: (subpackageIndex?: number, data?: object, dataSize?: number) => void): Cancellable {
         hmBle.createConnect(callback)
 
         return {
@@ -19,7 +19,7 @@ export namespace Bluetooth {
         return hmBle.connectStatus()
     }
 
-    export function onConnectedChange(callback: (status: boolean) => void): Listener {
+    export function onConnectedChange(callback: (status: boolean) => void): Cancellable {
         hmBle.addListener(callback)
 
         return {

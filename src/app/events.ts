@@ -1,4 +1,4 @@
-import { Listener } from "../callback";
+import { Cancellable } from "../cancellable";
 
 export namespace Events {
     export enum Gesture {
@@ -25,7 +25,7 @@ export namespace Events {
         Release = hmApp.action.RELEASE,
     }
 
-    export function onGesture(callback: (gesture: Gesture) => boolean): Listener {
+    export function onGesture(callback: (gesture: Gesture) => boolean): Cancellable {
         hmApp.registerGestureEvent(callback)
 
         return {
@@ -35,7 +35,7 @@ export namespace Events {
         }
     }
 
-    export function onKey(callback: (key: Key, action: Action) => boolean): Listener {
+    export function onKey(callback: (key: Key, action: Action) => boolean): Cancellable {
         hmApp.registerKeyEvent(callback)
 
         return {
@@ -45,7 +45,7 @@ export namespace Events {
         }
     }
 
-    export function onCrownTurn(callback: (degree: number) => boolean): Listener {
+    export function onCrownTurn(callback: (degree: number) => boolean): Cancellable {
         hmApp.registerSpinEvent((_, degree) => callback(degree))
 
         return {
