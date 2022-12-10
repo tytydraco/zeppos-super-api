@@ -1,4 +1,4 @@
-import { Callback, Listener } from "./callback"
+import { Callback, Listener } from "../callback"
 
 export class Energy {
     private sensor = hmSensor.createSensor(hmSensor.id.CALORIE)
