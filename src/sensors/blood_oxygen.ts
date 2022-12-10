@@ -1,23 +1,21 @@
+import { Callback, Listener } from "./callback"
+
 export class BloodOxygen {
-    private sensor: HmWearableProgram.DeviceSide.HmSensor.IHmSensorWidget
+    private sensor = hmSensor.createSensor(hmSensor.id.SPO2)
 
-    constructor() {
-        this.sensor = hmSensor.createSensor(hmSensor.id.SPO2)
-    }
-
-    get bloodOxygen(): number {
+    getBloodOxygen(): number {
         return this.sensor.current
     }
 
-    get hourlyBloodOxygen(): Array<number> {
+    getHourlyBloodOxygen(): Array<number> {
         return this.sensor.hourAvgofDay
     }
 
-    get mostRecentTime(): Date {
+    getMostRecentTime(): Date {
         return new Date(this.sensor.time)
     }
 
-    get mostRecentStatus(): BloodOxygen.Status {
+    getMostRecentStatus(): BloodOxygen.Status {
         return this.sensor.retcode
     }
 
@@ -29,8 +27,14 @@ export class BloodOxygen {
         this.sensor.stop()
     }
 
-    onBloodOxygenChange(callback: () => void): void {
+    onBloodOxygenChange(callback: Callback): Listener {
         this.sensor.addEventListener(hmSensor.event.CHANGE, callback)
+
+        return {
+            cancel() {
+                this.sensor.removeEventListener(hmSensor.event.CHANGE, callback)
+            }
+        }
     }
 }
 

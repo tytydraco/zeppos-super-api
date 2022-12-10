@@ -1,14 +1,11 @@
 export class Weather {
-    private sensor: HmWearableProgram.DeviceSide.HmSensor.IHmSensorWidget
-    constructor() {
-        this.sensor = hmSensor.createSensor(hmSensor.id.WEATHER)
-    }
+    private sensor = hmSensor.createSensor(hmSensor.id.WEATHER)
 
-    get cityName(): string {
+    getCityName(): string {
         return this.sensor.cityName
     }
 
-    get forecast(): Array<Weather.Forecast> {
+    getForecast(): Array<Weather.Forecast> {
         const forecastData: Array<any> = this.sensor.forecastData
         return forecastData.map<Weather.Forecast>(data => (
             {
@@ -19,7 +16,7 @@ export class Weather {
         ))
     }
 
-    get sunlight(): Array<Weather.Sunlight> {
+    getSunlight(): Array<Weather.Sunlight> {
         const tideData: Array<any> = this.sensor.tideData
         return tideData.map<Weather.Sunlight>(data => (
             {

@@ -1,9 +1,5 @@
 export class Sleep {
-    private sensor: HmWearableProgram.DeviceSide.HmSensor.IHmSensorWidget
-
-    constructor() {
-        this.sensor = hmSensor.createSensor(hmSensor.id.SLEEP)
-    }
+    private sensor = hmSensor.createSensor(hmSensor.id.SLEEP)
 
     refresh() {
         this.sensor.updateInfo()

@@ -1,15 +1,19 @@
+import { Callback, Listener } from "./callback"
+
 export class Distance {
-    private sensor: HmWearableProgram.DeviceSide.HmSensor.IHmSensorWidget
+    private sensor = hmSensor.createSensor(hmSensor.id.DISTANCE)
 
-    constructor() {
-        this.sensor = hmSensor.createSensor(hmSensor.id.DISTANCE)
-    }
-
-    get distance(): number {
+    getDistance(): number {
         return this.sensor.current
     }
 
-    onDistanceChange(callback: () => void): void {
+    onDistanceChange(callback: Callback): Listener {
         this.sensor.addEventListener(hmSensor.event.CHANGE, callback)
+
+        return {
+            cancel() {
+                this.sensor.removeEventListener(hmSensor.event.CHANGE, callback)
+            }
+        }
     }
 }

@@ -1,21 +1,21 @@
+import { Callback, Listener } from "./callback"
+
 export class Music {
-    private sensor: HmWearableProgram.DeviceSide.HmSensor.IHmSensorWidget
+    private sensor = hmSensor.createSensor(hmSensor.id.MUSIC)
 
     constructor() {
-        this.sensor = hmSensor.createSensor(hmSensor.id.MUSIC)
-
         this.initialize()
     }
 
-    get artist(): string {
+    getArtist(): string {
         return this.sensor.artist
     }
 
-    get title(): string {
+    getTitle(): string {
         return this.sensor.artist
     }
 
-    get isPlaying(): boolean {
+    getIsPlaying(): boolean {
         return this.sensor.isPlaying
     }
 
@@ -39,7 +39,13 @@ export class Music {
         this.sensor.audNext()
     }
 
-    onMusicChange(callback: () => void): void {
+    onMusicChange(callback: Callback): Listener {
         this.sensor.addEventListener(hmSensor.event.CHANGE, callback)
+
+        return {
+            cancel() {
+                this.sensor.removeEventListener(hmSensor.event.CHANGE, callback)
+            }
+        }
     }
 }

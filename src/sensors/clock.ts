@@ -1,69 +1,66 @@
 import { Locale } from "../settings/locale";
+import { Callback, Listener } from "./callback";
 
 export class Clock {
-    private sensor: HmWearableProgram.DeviceSide.HmSensor.IHmSensorWidget
+    private sensor = hmSensor.createSensor(hmSensor.id.TIME)
 
-    constructor() {
-        this.sensor = hmSensor.createSensor(hmSensor.id.TIME)
-    }
-
-    get millisecondsSinceEpoch(): number {
+    getMillisecondsSinceEpoch(): number {
         return this.sensor.utc
     }
 
-    get day(): number {
+    getDay(): number {
         return this.sensor.day
     }
 
-    get month(): number {
+    getMonth(): number {
         return this.sensor.month
     }
 
-    get year(): number {
+    getYear(): number {
         return this.sensor.year
     }
 
-    get dayOfTheWeek(): Clock.Weekday {
+    getDayOfTheWeek(): Clock.Weekday {
         return this.sensor.week
     }
 
-    get hour(): number {
+    getHour(): number {
         return this.sensor.hour
     }
 
-    get minute(): number {
+    getMinute(): number {
         return this.sensor.minute
     }
 
-    get second(): number {
+    getSecond(): number {
         return this.sensor.second
     }
 
-    get lunarDay(): number {
+    getLunarDay(): number {
         return this.sensor.lunar_day
     }
 
-    get lunarMonth(): number {
+    getLunarMonth(): number {
         return this.sensor.lunar_month
     }
 
-    get lunarYear(): number {
+    getLunarYear(): number {
         return this.sensor.lunar_year
     }
 
-    get lunarFestival(): string {
+    getLunarFestival(): string {
         return this.sensor.lunar_festival
     }
 
-    get lunarSolarTerm(): string {
+    getLunarSolarTerm(): string {
         return this.sensor.lunar_solar_term
     }
 
-    get gregorianHoliday(): String {
+    getGregorianHoliday(): String {
         return this.sensor.solar_festival
     }
 
-    get timeFormat(): Locale.TimeFormat {
+    getTimeFormat(): Locale.TimeFormat {
         return this.sensor.is24Hour ? Locale.TimeFormat.TwentyFour : Locale.TimeFormat.Twelve
     }
 
@@ -79,12 +76,24 @@ export class Clock {
         return this.sensor.getShowFestival()
     }
 
-    onEndOfMinute(callback: () => void): void {
+    onEndOfMinute(callback: Callback): Listener {
         this.sensor.addEventListener(hmSensor.event.MINUTEEND, callback)
+
+        return {
+            cancel() {
+                this.sensor.removeEventListener(hmSensor.event.MINUTEEND, callback)
+            }
+        }
     }
 
-    onEndOfDay(callback: () => void): void {
+    onEndOfDay(callback: Callback): Listener {
         this.sensor.addEventListener(hmSensor.event.DAYCHANGE, callback)
+
+        return {
+            cancel() {
+                this.sensor.removeEventListener(hmSensor.event.DAYCHANGE, callback)
+            }
+        }
     }
 }
 

@@ -1,19 +1,23 @@
+import { Callback, Listener } from "./callback"
+
 export class FatBurning {
-    private sensor: HmWearableProgram.DeviceSide.HmSensor.IHmSensorWidget
+    private sensor = hmSensor.createSensor(hmSensor.id.FAT_BURRING)
 
-    constructor() {
-        this.sensor = hmSensor.createSensor(hmSensor.id.FAT_BURRING)
-    }
-
-    get fatBurningMinutes(): number {
+    getFatBurningMinutes(): number {
         return this.sensor.current
     }
 
-    get targetFatBurningMinutes(): number {
+    getTargetFatBurningMinutes(): number {
         return this.sensor.target
     }
 
-    onFatBurningMinutesChange(callback: () => void): void {
+    onFatBurningMinutesChange(callback: Callback): Listener {
         this.sensor.addEventListener(hmSensor.event.CHANGE, callback)
+
+        return {
+            cancel() {
+                this.sensor.removeEventListener(hmSensor.event.CHANGE, callback)
+            }
+        }
     }
 }

@@ -1,13 +1,11 @@
 export class WorldClock {
-    private sensor: HmWearableProgram.DeviceSide.HmSensor.IHmSensorWidget
+    private sensor = hmSensor.createSensor(hmSensor.id.WORLD_CLOCK)
 
     constructor() {
-        this.sensor = hmSensor.createSensor(hmSensor.id.WORLD_CLOCK)
-
         this.initialize()
     }
 
-    get count(): number {
+    getCount(): number {
         return this.sensor.getWorldClockCount()
     }
 

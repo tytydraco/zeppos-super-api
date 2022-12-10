@@ -1,15 +1,19 @@
+import { Callback, Listener } from "./callback"
+
 export class Battery {
-    private sensor: HmWearableProgram.DeviceSide.HmSensor.IHmSensorWidget
+    private sensor = hmSensor.createSensor(hmSensor.id.BATTERY)
 
-    constructor() {
-        this.sensor = hmSensor.createSensor(hmSensor.id.BATTERY)
-    }
-
-    get level(): number {
+    getLevel(): number {
         return this.sensor.current
     }
 
-    onLevelChange(callback: () => void): void {
+    onLevelChange(callback: Callback): Listener {
         this.sensor.addEventListener(hmSensor.event.CHANGE, callback)
+
+        return {
+            cancel() {
+                this.sensor.removeEventListener(hmSensor.event.CHANGE, callback)
+            }
+        }
     }
 }

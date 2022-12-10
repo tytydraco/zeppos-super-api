@@ -1,20 +1,24 @@
+import { Callback, Listener } from "./callback"
+
 export class Stress {
-    private sensor: HmWearableProgram.DeviceSide.HmSensor.IHmSensorWidget
+    private sensor = hmSensor.createSensor(hmSensor.id.STRESS)
 
-    constructor() {
-        this.sensor = hmSensor.createSensor(hmSensor.id.STRESS)
-    }
-
-    get stress(): number {
+    getStress(): number {
         return this.sensor.current
     }
 
     /* TODO: check if ms? Convert to date? */
-    get mostRecentTime(): Date {
+    getMostRecentTime(): Date {
         return new Date(this.sensor.time)
     }
 
-    onStressChange(callback: () => void): void {
+    onStressChange(callback: Callback): Listener {
         this.sensor.addEventListener(hmSensor.event.CHANGE, callback)
+
+        return {
+            cancel() {
+                this.sensor.removeEventListener(hmSensor.event.CHANGE, callback)
+            }
+        }
     }
 }

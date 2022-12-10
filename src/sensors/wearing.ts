@@ -1,16 +1,20 @@
+import { Callback, Listener } from "./callback"
+
 export class Wearing {
-    private sensor: HmWearableProgram.DeviceSide.HmSensor.IHmSensorWidget
+    private sensor = hmSensor.createSensor(hmSensor.id.WEAR)
 
-    constructor() {
-        this.sensor = hmSensor.createSensor(hmSensor.id.WEAR)
-    }
-
-    get status(): Wearing.Status {
+    getStatus(): Wearing.Status {
         return this.sensor.current
     }
 
-    onStatusChange(callback: () => void): void {
+    onStatusChange(callback: Callback): Listener {
         this.sensor.addEventListener(hmSensor.event.CHANGE, callback)
+
+        return {
+            cancel() {
+                this.sensor.removeEventListener(hmSensor.event.CHANGE, callback)
+            }
+        }
     }
 }
 

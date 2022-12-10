@@ -1,28 +1,38 @@
+import { Callback, Listener } from "./callback"
+
 export class HeartRate {
-    private sensor: HmWearableProgram.DeviceSide.HmSensor.IHmSensorWidget
+    private sensor = hmSensor.createSensor(hmSensor.id.HEART)
 
-    constructor() {
-        this.sensor = hmSensor.createSensor(hmSensor.id.HEART)
-    }
-
-    get bpm(): number {
+    getBpm(): number {
         return this.sensor.current
     }
 
-    get lastBpm(): number {
+    getLastBpm(): number {
         return this.sensor.last
     }
 
-    get todaysBpm(): Array<number> {
+    getTodaysBpm(): Array<number> {
         return this.sensor.today
     }
 
     /* TODO: destroy and a way to destroy all */
-    onBpmChange(callback: () => void): void {
+    onBpmChange(callback: Callback): Listener {
         this.sensor.addEventListener(hmSensor.event.CURRENT, callback)
+
+        return {
+            cancel() {
+                this.sensor.removeEventListener(hmSensor.event.CURRENT, callback)
+            }
+        }
     }
 
-    onLastBpmChange(callback: () => void): void {
+    onLastBpmChange(callback: Callback): Listener {
         this.sensor.addEventListener(hmSensor.event.LAST, callback)
+
+        return {
+            cancel() {
+                this.sensor.removeEventListener(hmSensor.event.LAST, callback)
+            }
+        }
     }
 }

@@ -1,19 +1,15 @@
 export class PersonalActivity {
-    private sensor: HmWearableProgram.DeviceSide.HmSensor.IHmSensorWidget
+    private sensor = hmSensor.createSensor(hmSensor.id.PAI)
 
-    constructor() {
-        this.sensor = hmSensor.createSensor(hmSensor.id.PAI)
-    }
-
-    get dailyValue(): number {
+    getDailyValue(): number {
         return this.sensor.dailypai
     }
 
-    get totalValue(): number {
+    getTotalValue(): number {
         return this.sensor.totalpai
     }
 
-    get weeklyValues(): Array<number> {
+    getWeeklyValues(): Array<number> {
         return [
             this.sensor.prepai0,
             this.sensor.prepai1,

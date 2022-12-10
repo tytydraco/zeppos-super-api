@@ -6,6 +6,8 @@ export namespace Screen {
         Round,
     }
 
+    var x = 10;
+
     export function getAutoBrightness(): boolean {
         return hmSetting.getScreenAutoBright()
     }

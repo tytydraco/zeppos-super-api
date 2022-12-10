@@ -1,19 +1,23 @@
+import { Callback, Listener } from "./callback"
+
 export class Pedometer {
-    private sensor: HmWearableProgram.DeviceSide.HmSensor.IHmSensorWidget
+    private sensor = hmSensor.createSensor(hmSensor.id.STEP)
 
-    constructor() {
-        this.sensor = hmSensor.createSensor(hmSensor.id.STEP)
-    }
-
-    get steps(): number {
+    getSteps(): number {
         return this.sensor.current
     }
 
-    get targetSteps(): number {
+    getTargetSteps(): number {
         return this.sensor.target
     }
 
-    onStepsChange(callback: () => void): void {
+    onStepsChange(callback: Callback): Listener {
         this.sensor.addEventListener(hmSensor.event.CHANGE, callback)
+
+        return {
+            cancel() {
+                this.sensor.removeEventListener(hmSensor.event.CHANGE, callback)
+            }
+        }
     }
 }

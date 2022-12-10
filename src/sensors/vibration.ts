@@ -1,21 +1,17 @@
 export class Vibration {
-    private sensor: HmWearableProgram.DeviceSide.HmSensor.IHmSensorWidget
+    private sensor = hmSensor.createSensor(hmSensor.id.VIBRATE)
 
-    constructor() {
-        this.sensor = hmSensor.createSensor(hmSensor.id.VIBRATE)
-    }
-
-    get pattern(): Vibration.Pattern {
+    getPattern(): Vibration.Pattern {
         return this.sensor.scene
     }
 
-    set pattern(pattern: Vibration.Pattern) {
+    setPattern(pattern: Vibration.Pattern) {
         this.sensor.scene = pattern
     }
 
     start(pattern?: Vibration.Pattern) {
         if (pattern != null)
-            this.pattern = pattern
+            this.setPattern(pattern)
 
         this.sensor.start()
     }
