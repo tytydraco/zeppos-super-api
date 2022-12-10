@@ -12,7 +12,7 @@ export class BloodOxygen {
     }
 
     getMostRecentTime(): Date {
-        return new Date(this.sensor.time)
+        return new Date(this.sensor.time * 1000)
     }
 
     getMostRecentStatus(): BloodOxygen.Status {
@@ -40,16 +40,18 @@ export class BloodOxygen {
 
 export namespace BloodOxygen {
     export enum Status {
-        Invalid,
-        Continue,
-        Success,
-        Failure,
-        NotWearing,
-        Timeout,
-        InvalidWearing,
-        InvalidSignal,
-        LowBloodOxygen,
-        HighBloodOxygen,
-        InvalidMeasurement,
+        Success = 2,
+        Continue = 1,
+
+        Failure = 3,
+        Invalid = 0,
+        InvalidWearing = 6,
+        InvalidSignal = 7,
+        InvalidMeasurement = 10,
+        NotWearing = 4,
+        Timeout = 5,
+
+        LowBloodOxygen = 8,
+        HighBloodOxygen = 9,
     }
 }

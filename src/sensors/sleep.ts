@@ -5,7 +5,7 @@ export class Sleep {
         this.sensor.updateInfo()
     }
 
-    getDateAfterMinutes(date: Date, minutes: number): Date {
+    private getDateAfterMinutes(date: Date, minutes: number): Date {
         const newDate = new Date(date.getTime())
         newDate.setMinutes(newDate.getMinutes() + minutes)
 

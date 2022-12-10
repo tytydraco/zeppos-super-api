@@ -31,35 +31,42 @@ export class Weather {
 
 export namespace Weather {
     export enum WeatherType {
-        Cloudy,
-        Showers,
-        SnowShowers,
-        Sunny,
-        Overcast,
-        LightRain,
-        LightSnow,
-        ModerateRain,
-        ModerateSnow,
-        HeavySnow,
-        HeavyRain,
-        Sandstorm,
-        RainandSnow,
-        Fog,
-        Hazy,
-        TStorms,
-        Snowstorm,
-        Floatingdust,
-        RainStorm,
-        RainAndHail,
-        TStormsAndHail,
-        HeavyRainstorm,
-        Dust,
-        Heavysandstorm,
-        FIXME_Rainstorm, /* TODO: fix this */
-        Unknown,
-        CloudyNighttime,
-        ShowersNighttime,
-        SunnyNighttime,
+        Sunny = 3,
+        SunnyNightTime = 28,
+
+        Cloudy = 0,
+        CloudyNightTime = 26,
+        Overcast = 4,
+
+        Hazy = 14,
+        Fog = 13,
+
+        Showers = 1,
+        ShowersNightTime = 27,
+        LightRain = 5,
+        ModerateRain = 7,
+        HeavyRain = 10,
+        RainAndHail = 19,
+        RainStorm = 18,
+        HeavyRainStorm = 21,
+        VeryHeavyRainstorm = 24,
+        ThunderStorms = 15,
+        ThunderStormsAndHail = 20,
+
+        RainAndSnow = 12,
+        SnowShowers = 2,
+        LightSnow = 6,
+        ModerateSnow = 8,
+        HeavySnow = 9,
+        SnowStorm = 16,
+
+        SandStorm = 11,
+        HeavySandstorm = 23,
+
+        FloatingDust = 17,
+        Dust = 22,
+
+        Unknown = 25,
     }
 
     export interface Forecast {

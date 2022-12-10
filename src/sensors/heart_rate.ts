@@ -15,7 +15,6 @@ export class HeartRate {
         return this.sensor.today
     }
 
-    /* TODO: destroy and a way to destroy all */
     onBpmChange(callback: Callback): Listener {
         this.sensor.addEventListener(hmSensor.event.CURRENT, callback)
 

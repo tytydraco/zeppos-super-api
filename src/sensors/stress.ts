@@ -7,9 +7,8 @@ export class Stress {
         return this.sensor.current
     }
 
-    /* TODO: check if ms? Convert to date? */
     getMostRecentTime(): Date {
-        return new Date(this.sensor.time)
+        return new Date(this.sensor.time * 1000)
     }
 
     onStressChange(callback: Callback): Listener {
