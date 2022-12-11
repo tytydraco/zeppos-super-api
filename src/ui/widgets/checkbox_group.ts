@@ -7,7 +7,7 @@ export class CheckBoxGroup extends Widget<CheckBoxGroup.Configuration> {
         this.widget = hmUI.createWidget(hmUI.widget.CHECKBOX_GROUP, this.toNative(config))
 
         for (const stateButton of config.buttons) {
-            stateButton.attach(this.widget)
+            this.widget.setProperty(hmUI.prop.INIT, stateButton.widget)
         }
     }
 
@@ -21,6 +21,14 @@ export class CheckBoxGroup extends Widget<CheckBoxGroup.Configuration> {
             unselect_src: config.imagePath,
             check_func: (_: any, index: number, checked: boolean) => config.onClick(index, checked),
         }
+    }
+
+    check(button: StateButton) {
+        button.widget.setProperty(hmUI.prop.CHECKED, this.widget)
+    }
+
+    uncheck(button: StateButton) {
+        button.widget.setProperty(hmUI.prop.UNCHECKED, this.widget)
     }
 }
 
