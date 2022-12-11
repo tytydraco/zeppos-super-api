@@ -13,5 +13,17 @@ export abstract class Widget<T> {
         this.widget.setProperty(hmUI.prop.MORE, this.toNative(config))
     }
 
+    enable() {
+        this.widget.setEnable(true)
+    }
+
+    disable() {
+        this.widget.setEnable(false)
+    }
+
+    delete() {
+        hmUI.deleteWidget(this.widget)
+    }
+
     protected abstract toNative(config: T): Record<string, any>
 }
