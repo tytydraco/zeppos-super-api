@@ -1,10 +1,11 @@
 import { Widget } from "./widget"
 
 export class Group extends Widget<Group.Configuration> {
-    constructor(config: Group.Configuration) {
+    constructor(config: Group.Configuration,) {
         super()
         this.widget = hmUI.createWidget(hmUI.widget.GROUP, this.toNative(config))
 
+        /* TODO: fix!! */
         for (const child of config.children) {
             this.widget.createWidget()
         }
