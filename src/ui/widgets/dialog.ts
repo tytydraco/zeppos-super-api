@@ -1,10 +1,13 @@
 import { Text } from "./text"
-import { Widget } from "./widget"
+import { Builder, Widget } from "./widget"
 
 export class Dialog extends Widget<Dialog.Configuration> {
-    constructor(config: Dialog.Configuration) {
+    constructor(public readonly config: Dialog.Configuration) {
         super()
-        this.widget = hmUI.createWidget(hmUI.widget.DIALOG, this.toNative(config))
+    }
+
+    build(builder: Builder = hmUI): void {
+        this.widget = builder.createWidget(hmUI.widget.DIALOG, this.toNative(this.config))
     }
 
     toNative(config: Dialog.Configuration): Record<string, any> {

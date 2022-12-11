@@ -1,9 +1,12 @@
-import { Widget } from "./widget"
+import { Builder, Widget } from "./widget"
 
 export class Switch extends Widget<Switch.Configuration> {
-    constructor(config: Switch.Configuration) {
+    constructor(public readonly config: Switch.Configuration) {
         super()
-        this.widget = hmUI.createWidget(hmUI.widget.SLIDE_SWITCH, this.toNative(config))
+    }
+
+    build(builder: Builder = hmUI): void {
+        this.widget = builder.createWidget(hmUI.widget.SLIDE_SWITCH, this.toNative(this.config))
     }
 
     toNative(config: Switch.Configuration): Record<string, any> {

@@ -1,13 +1,16 @@
-import { Widget } from "./widget"
+import { Builder, Widget } from "./widget"
 
 export class ImageScrollList extends Widget<ImageScrollList.Configuration> {
-    constructor(config: ImageScrollList.Configuration) {
+    constructor(public readonly config: ImageScrollList.Configuration) {
         super()
-        this.widget = hmUI.createWidget(hmUI.widget.SCROLL_LIST, this.toNative(config))
     }
 
     private getDataArrayForItems(items: Array<string>): Array<{ value: string }> {
         return items.map((item) => ({ value: item }))
+    }
+
+    build(builder: Builder = hmUI): void {
+        this.widget = builder.createWidget(hmUI.widget.SCROLL_LIST, this.toNative(this.config))
     }
 
     toNative(config: ImageScrollList.Configuration): Record<string, any> {

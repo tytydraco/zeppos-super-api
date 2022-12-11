@@ -1,9 +1,12 @@
-import { Widget } from "./widget"
+import { Builder, Widget } from "./widget"
 
 export class Histogram extends Widget<Histogram.Configuration> {
-    constructor(config: Histogram.Configuration) {
+    constructor(public readonly config: Histogram.Configuration) {
         super()
-        this.widget = hmUI.createWidget(hmUI.widget.HISTOGRAM, this.toNative(config))
+    }
+
+    build(builder: Builder = hmUI): void {
+        this.widget = builder.createWidget(hmUI.widget.HISTOGRAM, this.toNative(this.config))
     }
 
     toNative(config: Histogram.Configuration): Record<string, any> {

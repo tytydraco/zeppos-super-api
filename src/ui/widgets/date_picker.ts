@@ -1,9 +1,12 @@
-import { Widget } from "./widget"
+import { Builder, Widget } from "./widget"
 
 export class DatePicker extends Widget<DatePicker.Configuration> {
-    constructor(config: DatePicker.Configuration) {
+    constructor(public readonly config: DatePicker.Configuration) {
         super()
-        this.widget = hmUI.createWidget(hmUI.widget.PICK_DATE, this.toNative(config))
+    }
+
+    build(builder: Builder = hmUI): void {
+        this.widget = builder.createWidget(hmUI.widget.PICK_DATE, this.toNative(this.config))
     }
 
     toNative(config: DatePicker.Configuration): Record<string, any> {

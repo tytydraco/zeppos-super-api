@@ -1,9 +1,12 @@
-import { Widget } from "./widget"
+import { Builder, Widget } from "./widget"
 
 export class Button extends Widget<Button.Configuration> {
-    constructor(config: Button.Configuration) {
+    constructor(public readonly config: Button.Configuration) {
         super()
-        this.widget = hmUI.createWidget(hmUI.widget.BUTTON, this.toNative(config))
+    }
+
+    build(builder: Builder = hmUI): void {
+        this.widget = builder.createWidget(hmUI.widget.BUTTON, this.toNative(this.config))
     }
 
     toNative(config: Button.Configuration): Record<string, any> {

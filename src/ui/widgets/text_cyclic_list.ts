@@ -1,10 +1,13 @@
 import { Text } from "./text"
-import { Widget } from "./widget"
+import { Builder, Widget } from "./widget"
 
 export class TextCyclicList extends Widget<TextCyclicList.Configuration> {
-    constructor(config: TextCyclicList.Configuration) {
+    constructor(public readonly config: TextCyclicList.Configuration) {
         super()
-        this.widget = hmUI.createWidget(hmUI.widget.CYCLE_IMAGE_TEXT_LIST, this.toNative(config))
+    }
+
+    build(builder: Builder = hmUI): void {
+        this.widget = builder.createWidget(hmUI.widget.CYCLE_IMAGE_TEXT_LIST, this.toNative(this.config))
     }
 
     toNative(config: TextCyclicList.Configuration): Record<string, any> {

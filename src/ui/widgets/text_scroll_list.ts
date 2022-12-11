@@ -1,13 +1,16 @@
-import { Widget } from "./widget"
+import { Builder, Widget } from "./widget"
 
 export class TextScrollList extends Widget<TextScrollList.Configuration> {
-    constructor(config: TextScrollList.Configuration) {
+    constructor(public readonly config: TextScrollList.Configuration) {
         super()
-        this.widget = hmUI.createWidget(hmUI.widget.SCROLL_LIST, this.toNative(config))
     }
 
     private getDataArrayForItems(items: Array<string>): Array<{ value: string }> {
         return items.map((item) => ({ value: item }))
+    }
+
+    build(builder: Builder = hmUI): void {
+        this.widget = builder.createWidget(hmUI.widget.SCROLL_LIST, this.toNative(this.config))
     }
 
     toNative(config: TextScrollList.Configuration): Record<string, any> {

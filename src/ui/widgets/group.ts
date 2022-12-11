@@ -1,17 +1,16 @@
-import { Widget } from "./widget"
+import { Builder, Widget } from "./widget"
 
 export class Group extends Widget<Group.Configuration> {
-    constructor(config: Group.Configuration,) {
+    constructor(public readonly config: Group.Configuration,) {
         super()
-        this.widget = hmUI.createWidget(hmUI.widget.GROUP, this.toNative(config))
-
-        /* TODO: fix!! */
-        for (const child of config.children) {
-            this.widget.createWidget()
-        }
     }
 
-
+    build(builder: Builder = hmUI): void {
+        this.widget = builder.createWidget(hmUI.widget.GROUP, this.toNative(this.config))
+        for (const child of this.config.children) {
+            child.build(this.widget)
+        }
+    }
 
     toNative(config: Group.Configuration): Record<string, any> {
         return {

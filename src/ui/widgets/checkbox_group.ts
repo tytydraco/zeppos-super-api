@@ -1,12 +1,15 @@
 import { StateButton } from "./state_button"
-import { Widget } from "./widget"
+import { Builder, Widget } from "./widget"
 
 export class CheckBoxGroup extends Widget<CheckBoxGroup.Configuration> {
-    constructor(config: CheckBoxGroup.Configuration) {
+    constructor(public readonly config: CheckBoxGroup.Configuration) {
         super()
-        this.widget = hmUI.createWidget(hmUI.widget.CHECKBOX_GROUP, this.toNative(config))
+    }
 
-        for (const stateButton of config.buttons) {
+    build(builder: Builder = hmUI): void {
+        this.widget = builder.createWidget(hmUI.widget.CHECKBOX_GROUP, this.toNative(this.config))
+
+        for (const stateButton of this.config.buttons) {
             this.widget.setProperty(hmUI.prop.INIT, stateButton.widget)
         }
     }

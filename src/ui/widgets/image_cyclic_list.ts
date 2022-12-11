@@ -1,9 +1,12 @@
-import { Widget } from "./widget"
+import { Builder, Widget } from "./widget"
 
 export class ImageCyclicList extends Widget<ImageCyclicList.Configuration> {
-    constructor(config: ImageCyclicList.Configuration) {
+    constructor(public readonly config: ImageCyclicList.Configuration) {
         super()
-        this.widget = hmUI.createWidget(hmUI.widget.CYCLE_LIST, this.toNative(config))
+    }
+
+    build(builder: Builder = hmUI): void {
+        this.widget = builder.createWidget(hmUI.widget.CYCLE_LIST, this.toNative(this.config))
     }
 
     private getDataArrayForItems(items: Array<string>): Array<{ text: string }> {

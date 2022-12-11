@@ -1,9 +1,12 @@
-import { Widget } from "./widget"
+import { Builder, Widget } from "./widget"
 
 export class Text extends Widget<Text.Configuration> {
-    constructor(config: Text.Configuration) {
+    constructor(public readonly config: Text.Configuration) {
         super()
-        this.widget = hmUI.createWidget(hmUI.widget.IMG, this.toNative(config))
+    }
+
+    build(builder: Builder = hmUI): void {
+        this.widget = builder.createWidget(hmUI.widget.TEXT, this.toNative(this.config))
     }
 
     toNative(config: Text.Configuration): Record<string, any> {

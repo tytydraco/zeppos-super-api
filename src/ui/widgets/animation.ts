@@ -1,9 +1,12 @@
-import { Widget } from "./widget"
+import { Builder, Widget } from "./widget"
 
 export class Animation extends Widget<Animation.Configuration> {
-    constructor(config: Animation.Configuration) {
+    constructor(public readonly config: Animation.Configuration) {
         super()
-        this.widget = hmUI.createWidget(hmUI.widget.IMG_ANIM, this.toNative(config))
+    }
+
+    build(builder: Builder = hmUI): void {
+        this.widget = builder.createWidget(hmUI.widget.IMG_ANIM, this.toNative(this.config))
     }
 
     toNative(config: Animation.Configuration): Record<string, any> {

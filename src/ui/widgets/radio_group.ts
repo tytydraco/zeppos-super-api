@@ -1,12 +1,15 @@
 import { StateButton } from "./state_button"
-import { Widget } from "./widget"
+import { Builder, Widget } from "./widget"
 
 export class RadioGroup extends Widget<RadioGroup.Configuration> {
-    constructor(private config: RadioGroup.Configuration) {
+    constructor(public readonly config: RadioGroup.Configuration) {
         super()
-        this.widget = hmUI.createWidget(hmUI.widget.RADIO_GROUP, this.toNative(config))
+    }
 
-        for (const stateButton of config.buttons) {
+    build(builder: Builder = hmUI): void {
+        this.widget = builder.createWidget(hmUI.widget.RADIO_GROUP, this.toNative(this.config))
+
+        for (const stateButton of this.config.buttons) {
             this.widget.setProperty(hmUI.prop.INIT, stateButton.widget)
         }
     }
