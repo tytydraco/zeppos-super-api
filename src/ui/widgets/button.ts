@@ -1,10 +1,6 @@
 import { Builder, Widget } from "./widget"
 
 export class Button extends Widget<Button.Configuration> {
-    constructor(public readonly config: Button.Configuration) {
-        super()
-    }
-
     build(builder: Builder = hmUI): void {
         this.widget = builder.createWidget(hmUI.widget.BUTTON, this.toNative(this.config))
     }

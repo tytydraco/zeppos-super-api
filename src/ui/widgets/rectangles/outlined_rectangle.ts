@@ -1,10 +1,6 @@
 import { Builder, Widget } from "../widget"
 
 export class OutlinedRectangle extends Widget<OutlinedRectangle.Configuration> {
-    constructor(public readonly config: OutlinedRectangle.Configuration) {
-        super()
-    }
-
     build(builder: Builder = hmUI) {
         this.widget = builder.createWidget(hmUI.widget.STROKE_RECT, this.toNative(this.config))
     }

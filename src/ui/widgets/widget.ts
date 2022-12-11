@@ -7,6 +7,8 @@ export interface Builder {
 export abstract class Widget<T> {
     widget: HmWearableProgram.DeviceSide.HmUI.IHmUIWidget
 
+    constructor(public readonly config: T) { }
+
     abstract build(builder: Builder): void
 
     update(config: T) {

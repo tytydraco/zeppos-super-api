@@ -1,10 +1,6 @@
 import { Builder, Widget } from "./widget"
 
 export class ImageCyclicList extends Widget<ImageCyclicList.Configuration> {
-    constructor(public readonly config: ImageCyclicList.Configuration) {
-        super()
-    }
-
     build(builder: Builder = hmUI): void {
         this.widget = builder.createWidget(hmUI.widget.CYCLE_LIST, this.toNative(this.config))
     }

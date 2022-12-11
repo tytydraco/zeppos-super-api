@@ -1,10 +1,6 @@
 import { Builder, Widget } from "./widget"
 
 export class Histogram extends Widget<Histogram.Configuration> {
-    constructor(public readonly config: Histogram.Configuration) {
-        super()
-    }
-
     build(builder: Builder = hmUI): void {
         this.widget = builder.createWidget(hmUI.widget.HISTOGRAM, this.toNative(this.config))
     }

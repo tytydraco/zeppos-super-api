@@ -1,10 +1,6 @@
 import { Builder, Widget } from "./widget"
 
 export class Progress extends Widget<Progress.Configuration> {
-    constructor(public readonly config: Progress.Configuration) {
-        super()
-    }
-
     build(builder: Builder = hmUI): void {
         this.widget = builder.createWidget(hmUI.widget.ARC, this.toNative(this.config))
     }

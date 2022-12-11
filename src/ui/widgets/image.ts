@@ -1,10 +1,6 @@
 import { Builder, Widget } from "./widget"
 
 export class Image extends Widget<Image.Configuration> {
-    constructor(public readonly config: Image.Configuration) {
-        super()
-    }
-
     build(builder: Builder = hmUI): void {
         this.widget = builder.createWidget(hmUI.widget.IMG, this.toNative(this.config))
     }

@@ -1,10 +1,6 @@
 import { Builder, Widget } from "../widget"
 
 export class FilledRectangle extends Widget<FilledRectangle.Configuration> {
-    constructor(public readonly config: FilledRectangle.Configuration) {
-        super()
-    }
-
     build(builder: Builder = hmUI) {
         this.widget = builder.createWidget(hmUI.widget.FILL_RECT, this.toNative(this.config))
     }

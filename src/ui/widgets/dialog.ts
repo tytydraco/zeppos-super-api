@@ -2,10 +2,6 @@ import { Text } from "./text"
 import { Builder, Widget } from "./widget"
 
 export class Dialog extends Widget<Dialog.Configuration> {
-    constructor(public readonly config: Dialog.Configuration) {
-        super()
-    }
-
     build(builder: Builder = hmUI): void {
         this.widget = builder.createWidget(hmUI.widget.DIALOG, this.toNative(this.config))
     }

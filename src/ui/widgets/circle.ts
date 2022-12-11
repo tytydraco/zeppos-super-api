@@ -1,10 +1,6 @@
 import { Builder, Widget } from "./widget"
 
 export class Circle extends Widget<Circle.Configuration> {
-    constructor(public readonly config: Circle.Configuration) {
-        super()
-    }
-
     build(builder: Builder = hmUI): void {
         this.widget = builder.createWidget(hmUI.widget.CIRCLE, this.toNative(this.config))
     }

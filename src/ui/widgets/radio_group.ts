@@ -2,10 +2,6 @@ import { StateButton } from "./state_button"
 import { Builder, Widget } from "./widget"
 
 export class RadioGroup extends Widget<RadioGroup.Configuration> {
-    constructor(public readonly config: RadioGroup.Configuration) {
-        super()
-    }
-
     build(builder: Builder = hmUI): void {
         this.widget = builder.createWidget(hmUI.widget.RADIO_GROUP, this.toNative(this.config))
 

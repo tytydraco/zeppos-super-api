@@ -1,10 +1,6 @@
 import { Builder, Widget } from "./widget"
 
 export class TextScrollList extends Widget<TextScrollList.Configuration> {
-    constructor(public readonly config: TextScrollList.Configuration) {
-        super()
-    }
-
     private getDataArrayForItems(items: Array<string>): Array<{ value: string }> {
         return items.map((item) => ({ value: item }))
     }

@@ -2,10 +2,6 @@ import { Text } from "./text"
 import { Builder, Widget } from "./widget"
 
 export class TextCyclicList extends Widget<TextCyclicList.Configuration> {
-    constructor(public readonly config: TextCyclicList.Configuration) {
-        super()
-    }
-
     build(builder: Builder = hmUI): void {
         this.widget = builder.createWidget(hmUI.widget.CYCLE_IMAGE_TEXT_LIST, this.toNative(this.config))
     }
