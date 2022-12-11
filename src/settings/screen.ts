@@ -1,12 +1,8 @@
-import 'zeppos-device-types-v1'
-
 export namespace Screen {
     export enum Shape {
         Rectangular,
         Round,
     }
-
-    var x = 10;
 
     export function getAutoBrightness(): boolean {
         return hmSetting.getScreenAutoBright()

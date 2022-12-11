@@ -1,6 +1,5 @@
-import 'zeppos-device-types-v1'
-
 export namespace Storage {
+
     export interface DiskInfo {
         totalBytes: number,
         freeBytes: number,

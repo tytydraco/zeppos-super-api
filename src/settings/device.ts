@@ -1,4 +1,3 @@
-import 'zeppos-device-types-v1'
 import { Screen } from './screen'
 
 export namespace Device {
