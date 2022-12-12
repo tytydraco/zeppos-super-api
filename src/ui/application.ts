@@ -7,7 +7,7 @@ export class Application {
         if (Application.instance != null)
             return
 
-        DeviceRuntimeCore.App({
+        App({
             onCreate: methods.onCreate,
             onDestroy: methods.onDestroy,
             data: this.state,

@@ -1,7 +1,7 @@
-export class FIXPage {
+export class View {
     state: Record<string, any> = {}
 
-    constructor(methods: Application.Methods) {
+    constructor(methods: Page.Methods) {
         Page({
             onInit: methods.onInitialize,
             build: methods.onBuild,
@@ -11,7 +11,7 @@ export class FIXPage {
     }
 }
 
-export namespace Application {
+export namespace Page {
     export interface Methods {
         onInitialize?: (parameters: string) => void,
         onBuild?: () => void,

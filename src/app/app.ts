@@ -65,7 +65,7 @@ export namespace App {
     export function getPackageInfo(): PackageInfo {
         const packageInfo = hmApp.packageInfo()
 
-        let appType: Type
+        let appType = Type.App
         switch (packageInfo.appType) {
             case 'app':
                 appType = Type.App
@@ -79,7 +79,7 @@ export namespace App {
             id: packageInfo.appId,
             name: packageInfo.name,
             description: packageInfo.description,
-            type: type,
+            type: appType,
             version: packageInfo.version.name,
             versionCode: packageInfo.version.code,
             iconPath: packageInfo.icon,

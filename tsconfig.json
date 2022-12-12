@@ -1,13 +1,16 @@
 {
-    "include": [
-        "src/**/*"
-    ],
     "compilerOptions": {
         "module": "ES6",
         "target": "ES6",
         "moduleResolution": "Node",
         "declaration": true,
-        "outDir": "./dist",
-        "allowJs": true
+        "outDir": "./lib",
+        "declarationDir": "./types",
+        "allowJs": true,
+        "strict": false,
+        "esModuleInterop": true,
+        "typeRoots": [
+            "./node_modules/zeppos-device-types-v1"
+        ],
     }
 }

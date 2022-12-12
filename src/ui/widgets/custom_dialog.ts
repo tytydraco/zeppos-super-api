@@ -1,12 +1,12 @@
 import { Text } from "./text"
 import { Builder, Widget } from "./widget"
 
-export class Dialog extends Widget<Dialog.Configuration> {
+export class CustomDialog extends Widget<CustomDialog.Configuration> {
     build(builder: Builder = hmUI): void {
         this.widget = builder.createWidget(hmUI.widget.DIALOG, this.toNative(this.config))
     }
 
-    toNative(config: Dialog.Configuration): Record<string, any> {
+    toNative(config: CustomDialog.Configuration): Record<string, any> {
         return {
             text: config.text,
             content_text_size: config.fontSize,
@@ -40,7 +40,7 @@ export class Dialog extends Widget<Dialog.Configuration> {
     }
 }
 
-export namespace Dialog {
+export namespace CustomDialog {
     export interface ButtonConfiguration {
         text?: string,
         textColor?: number,
