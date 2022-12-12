@@ -8,9 +8,6 @@
         "moduleResolution": "Node",
         "declaration": true,
         "outDir": "./dist",
-        "allowJs": true,
-        "typeRoots": [
-            "./node_modules/zeppos-device-types-v1"
-        ]
+        "allowJs": true
     }
 }

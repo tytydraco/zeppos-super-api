@@ -5,7 +5,7 @@ export interface Builder {
 }
 
 export abstract class Widget<T> {
-    widget: HmWearableProgram.DeviceSide.HmUI.IHmUIWidget
+    widget: HmWearableProgram.DeviceSide.HmUI.IHmUIWidget = null
 
     constructor(public readonly config: T) { }
 

@@ -1,13 +1,13 @@
 export class Application {
     private static instance: Application
 
-    state: Record<string, any>
+    state: Record<string, any> = {}
 
     constructor(methods: Application.Methods) {
         if (Application.instance != null)
             return
 
-        App({
+        DeviceRuntimeCore.App({
             onCreate: methods.onCreate,
             onDestroy: methods.onDestroy,
             data: this.state,

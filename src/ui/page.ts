@@ -1,5 +1,5 @@
 export class FIXPage {
-    state: Record<string, any>
+    state: Record<string, any> = {}
 
     constructor(methods: Application.Methods) {
         Page({
