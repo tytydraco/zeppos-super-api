@@ -10,7 +10,6 @@ export class DatePicker extends Widget<DatePicker.Configuration> {
             x: config.x,
             y: config.y,
             w: config.width,
-            font_size: config.fontSize,
             initYear: config.initialDate?.getFullYear(),
             initMonth: config.initialDate?.getMonth() + 1,
             initDay: config.initialDate?.getDay(),
@@ -29,7 +28,6 @@ export namespace DatePicker {
         y: number,
 
         width?: number,
-        fontSize?: number,
         initialDate?: Date,
     }
 }
