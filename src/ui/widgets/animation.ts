@@ -3,6 +3,10 @@ import { Builder, Widget } from "./widget"
 export class Animation extends Widget<Animation.Configuration> {
     build(builder: Builder = hmUI): void {
         this.widget = builder.createWidget(hmUI.widget.IMG_ANIM, this.toNative(this.config))
+
+        if (this.config.autoStart) {
+            this.start()
+        }
     }
 
     toNative(config: Animation.Configuration): Record<string, any> {
@@ -16,7 +20,6 @@ export class Animation extends Widget<Animation.Configuration> {
             repeat_count: config.repeat == Animation.RepeatMode.Once ? 1 : 0,
             anim_repeat: config.repeat != Animation.RepeatMode.None,
             anim_size: config.imageCount,
-            anim_status: config.startStatus,
             anim_complete_call: config.onComplete,
         }
     }
@@ -70,8 +73,8 @@ export namespace Animation {
         extension: string,
         framesPerSecond: number,
         imageCount: number,
-        startStatus: Status,
 
+        autoStart?: boolean,
         repeat?: RepeatMode,
         onComplete?: () => void,
     }

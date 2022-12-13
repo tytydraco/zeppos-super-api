@@ -1,20 +1,29 @@
+import { Widget } from "./widgets"
+
 export class View {
     state: Record<string, any> = {}
 
-    constructor(methods: Page.Methods) {
+    constructor(config: View.Configuration) {
         Page({
-            onInit: methods.onInitialize,
-            build: methods.onBuild,
-            onDestroy: methods.onDestroy,
+            onInit: config.onInitialize,
+            build() {
+                for (const child of config.children) {
+                    child.build(hmUI)
+                }
+
+                config?.onBuild()
+            },
+            onDestroy: config.onDestroy,
             data: this.state,
         })
     }
 }
 
-export namespace Page {
-    export interface Methods {
-        onInitialize?: (parameters: string) => void,
+export namespace View {
+    export interface Configuration {
+        onInitialize?: (parameters?: string) => void,
         onBuild?: () => void,
         onDestroy?: () => void,
+        children?: Array<Widget<any>>,
     }
 }

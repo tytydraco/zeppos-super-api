@@ -12,5 +12,8 @@
         "typeRoots": [
             "./node_modules/zeppos-device-types-v1"
         ],
-    }
+    },
+    "include": [
+        "src/**/*.ts"
+    ]
 }

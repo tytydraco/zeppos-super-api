@@ -1,11 +1,11 @@
 export declare class Application {
     private static instance;
     state: Record<string, any>;
-    constructor(methods: Application.Methods);
+    constructor(config: Application.Configuration);
 }
 export declare namespace Application {
-    interface Methods {
-        onCreate?: (parameters: string) => void;
+    interface Configuration {
+        onCreate?: (parameters?: string) => void;
         onDestroy?: () => void;
     }
 }

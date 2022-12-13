@@ -12,16 +12,14 @@ export class DatePicker extends Widget<DatePicker.Configuration> {
             w: config.width,
             font_size: config.fontSize,
             initYear: config.initialDate?.getFullYear(),
-            initMonth: config.initialDate?.getMonth(),
+            initMonth: config.initialDate?.getMonth() + 1,
             initDay: config.initialDate?.getDay(),
-            initHour: config.initialDate?.getHours(),
-            initMin: config.initialDate?.getMinutes(),
         }
     }
 
     getDate(): Date {
-        const dateObject = this.widget.getProperty<Record<string, number>>(hmUI.prop.MORE)
-        return new Date(dateObject.year, dateObject.month, dateObject.day, dateObject.hour, dateObject.minute)
+        const dateObject = this.widget.getProperty<Record<string, number>>(hmUI.prop.MORE, {})
+        return new Date(Date.UTC(dateObject.year, dateObject.month - 1, dateObject.day))
     }
 }
 
@@ -31,7 +29,7 @@ export namespace DatePicker {
         y: number,
 
         width?: number,
-        fontSize?: number
+        fontSize?: number,
         initialDate?: Date,
     }
 }

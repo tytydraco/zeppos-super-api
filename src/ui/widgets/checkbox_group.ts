@@ -6,6 +6,7 @@ export class CheckBoxGroup extends Widget<CheckBoxGroup.Configuration> {
         this.widget = builder.createWidget(hmUI.widget.CHECKBOX_GROUP, this.toNative(this.config))
 
         for (const stateButton of this.config.buttons) {
+            stateButton.build(this.widget)
             this.widget.setProperty(hmUI.prop.INIT, stateButton.widget)
         }
     }

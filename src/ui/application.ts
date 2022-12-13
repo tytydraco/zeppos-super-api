@@ -3,21 +3,21 @@ export class Application {
 
     state: Record<string, any> = {}
 
-    constructor(methods: Application.Methods) {
+    constructor(config: Application.Configuration) {
         if (Application.instance != null)
             return
 
         App({
-            onCreate: methods.onCreate,
-            onDestroy: methods.onDestroy,
+            onCreate: config.onCreate,
+            onDestroy: config.onDestroy,
             data: this.state,
         })
     }
 }
 
 export namespace Application {
-    export interface Methods {
-        onCreate?: (parameters: string) => void,
+    export interface Configuration {
+        onCreate?: (parameters?: string) => void,
         onDestroy?: () => void,
     }
 }

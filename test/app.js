@@ -1,10 +1,8 @@
-App({
-  globalData: {},
-  onCreate(options) {
-    console.log('app on create invoke')
-  },
+import { Application, Scroll, StatusBar } from "zeppos-super-api";
 
-  onDestroy(options) {
-    console.log('app on destroy invoke')
+new Application({
+  onCreate() {
+    StatusBar.hide()
+    Scroll.enable()
   }
 })

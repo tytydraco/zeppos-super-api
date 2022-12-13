@@ -27,7 +27,7 @@ export declare namespace Animation {
         extension: string;
         framesPerSecond: number;
         imageCount: number;
-        startStatus: Status;
+        autoStart?: boolean;
         repeat?: RepeatMode;
         onComplete?: () => void;
     }
