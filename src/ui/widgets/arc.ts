@@ -1,11 +1,11 @@
 import { Builder, Widget } from "./widget"
 
-export class Progress extends Widget<Progress.Configuration> {
+export class Arc extends Widget<Arc.Configuration> {
     build(builder: Builder = hmUI): void {
         this.widget = builder.createWidget(hmUI.widget.ARC, this.toNative(this.config))
     }
 
-    toNative(config: Progress.Configuration): Record<string, any> {
+    toNative(config: Arc.Configuration): Record<string, any> {
         return {
             x: config.x,
             y: config.y,
@@ -20,7 +20,7 @@ export class Progress extends Widget<Progress.Configuration> {
     }
 }
 
-export namespace Progress {
+export namespace Arc {
     export interface Configuration {
         x: number,
         y: number,
