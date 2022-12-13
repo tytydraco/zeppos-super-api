@@ -1,11 +1,6 @@
 import { View, FilledRectangle, OutlinedRectangle, debug, Animation, Button, CheckBoxGroup, StateButton, Circle, DatePicker, Clock, Text, Scroll } from "zeppos-super-api";
 
-const time = new Clock();
-let currentDate = new Date(
-  time.getYear(),
-  time.getMonth() - 1,
-  time.getDay(),
-);
+let currentDate = new Date();
 
 const anim = new Animation({
   x: 0,
@@ -29,13 +24,7 @@ const date = new DatePicker({
 new View({
   onInitialize() {
     debug('View init')
-
     Scroll.enable()
-
-    debug(`day: ${time.getDay()}`)
-    debug(`month: ${time.getMonth()}`)
-    debug(`year: ${time.getYear()}`)
-
     debug(`its ${currentDate.toISOString()}`)
   },
   onBuild() {
