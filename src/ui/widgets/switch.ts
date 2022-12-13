@@ -36,7 +36,7 @@ export class Switch extends Widget<Switch.Configuration> {
 }
 
 export namespace Switch {
-    export interface Configuration {
+    export interface Configuration extends Widget.Configuration {
         x: number,
         y: number,
         width: number,

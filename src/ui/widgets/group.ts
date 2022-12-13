@@ -19,7 +19,7 @@ export class Group extends Widget<Group.Configuration> {
 }
 
 export namespace Group {
-    export interface Configuration {
+    export interface Configuration extends Widget.Configuration {
         x: number,
         y: number,
         width: number,

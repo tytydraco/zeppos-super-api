@@ -51,7 +51,7 @@ export namespace CustomDialog {
         onClick?: () => void,
     }
 
-    export interface Configuration {
+    export interface Configuration extends Widget.Configuration {
         text: string,
 
         fontSize?: number,

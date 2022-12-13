@@ -26,7 +26,7 @@ export class TextCyclicList extends Widget<TextCyclicList.Configuration> {
 }
 
 export namespace TextCyclicList {
-    export interface Configuration {
+    export interface Configuration extends Widget.Configuration {
         x: number,
         y: number,
         width: number,

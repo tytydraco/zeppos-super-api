@@ -22,7 +22,7 @@ export class Rectangle extends Widget<Rectangle.Configuration> {
 }
 
 export namespace Rectangle {
-    export interface Configuration {
+    export interface Configuration extends Widget.Configuration {
         x: number,
         y: number,
         width: number,

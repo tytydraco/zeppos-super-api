@@ -17,7 +17,7 @@ export class Circle extends Widget<Circle.Configuration> {
 }
 
 export namespace Circle {
-    export interface Configuration {
+    export interface Configuration extends Widget.Configuration {
         x: number,
         y: number,
         radius: number,

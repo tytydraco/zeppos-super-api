@@ -65,7 +65,7 @@ export namespace Animation {
         Stopped = hmUI.prop.ANIM_IS_STOP,
     }
 
-    export interface Configuration {
+    export interface Configuration extends Widget.Configuration {
         x: number,
         y: number,
         path: string,

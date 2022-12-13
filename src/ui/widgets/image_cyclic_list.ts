@@ -29,7 +29,7 @@ export class ImageCyclicList extends Widget<ImageCyclicList.Configuration> {
 }
 
 export namespace ImageCyclicList {
-    export interface Configuration {
+    export interface Configuration extends Widget.Configuration {
         x: number,
         y: number,
         width: number,

@@ -25,7 +25,7 @@ export class Button extends Widget<Button.Configuration> {
 }
 
 export namespace Button {
-    export interface Configuration {
+    export interface Configuration extends Widget.Configuration {
         x: number,
         y: number,
         width: number,

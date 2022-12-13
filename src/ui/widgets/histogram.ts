@@ -99,7 +99,7 @@ export namespace Histogram {
         yLabel: string,
     }
 
-    export interface Configuration {
+    export interface Configuration extends Widget.Configuration {
         x: number,
         y: number,
         width: number,

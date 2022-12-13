@@ -4,7 +4,7 @@ export interface Builder {
     createWidget(widgetType: number, options: HmWearableProgram.DeviceSide.HmUI.HmUIWidgetOptions): HmWearableProgram.DeviceSide.HmUI.IHmUIWidget
 }
 
-export abstract class Widget<T> {
+export abstract class Widget<T extends Widget.Configuration> {
     widget: HmWearableProgram.DeviceSide.HmUI.IHmUIWidget = null
 
     constructor(public readonly config: T) { }
@@ -28,4 +28,10 @@ export abstract class Widget<T> {
     }
 
     protected abstract toNative(config: T): Record<string, any>
+}
+
+export namespace Widget {
+    export interface Configuration {
+
+    }
 }

@@ -23,7 +23,7 @@ export class DatePicker extends Widget<DatePicker.Configuration> {
 }
 
 export namespace DatePicker {
-    export interface Configuration {
+    export interface Configuration extends Widget.Configuration {
         x: number,
         y: number,
 

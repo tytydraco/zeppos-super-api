@@ -22,7 +22,7 @@ export class Image extends Widget<Image.Configuration> {
 }
 
 export namespace Image {
-    export interface Configuration {
+    export interface Configuration extends Widget.Configuration {
         x: number,
         y: number,
         path: string,

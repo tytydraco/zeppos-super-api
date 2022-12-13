@@ -58,7 +58,7 @@ export namespace TextScrollList {
         fontSize?: number,
     }
 
-    export interface Configuration {
+    export interface Configuration extends Widget.Configuration {
         x: number,
         y: number,
         width: number,

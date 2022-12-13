@@ -20,7 +20,7 @@ export class StateButton extends Widget<StateButton.Configuration> {
 }
 
 export namespace StateButton {
-    export interface Configuration {
+    export interface Configuration extends Widget.Configuration {
         x: number,
         y: number,
         width: number,
