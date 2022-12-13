@@ -102,8 +102,8 @@ new View({
       }
     }),
     new Circle({
-      x: 25,
-      y: 275,
+      x: 0,
+      y: 250,
       radius: 25,
       color: 0xaaaaff,
     }),

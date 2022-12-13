@@ -7,8 +7,8 @@ export class Circle extends Widget<Circle.Configuration> {
 
     toNative(config: Circle.Configuration): Record<string, any> {
         return {
-            center_x: config.x,
-            center_y: config.y,
+            center_x: config.x + config.radius,
+            center_y: config.y + config.radius,
             radius: config.radius,
             color: config.color,
             alpha: config.alpha,
