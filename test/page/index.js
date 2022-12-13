@@ -1,4 +1,4 @@
-import { View, FilledRectangle, OutlinedRectangle, debug, Animation, Button, CheckBoxGroup, StateButton, Circle, DatePicker, Clock, Text, Scroll } from "zeppos-super-api";
+import { View, Rectangle, debug, Animation, Button, CheckBoxGroup, StateButton, Circle, DatePicker, Clock, Text, Scroll } from "zeppos-super-api";
 
 let currentDate = new Date();
 
@@ -34,21 +34,22 @@ new View({
     debug('View destroy')
   },
   children: [
-    new FilledRectangle({
+    new Rectangle({
       x: 0,
       y: 0,
       width: 100,
       height: 50,
       color: 0xff0000,
       radius: 10,
+      filled: true,
     }),
-    new OutlinedRectangle({
+    new Rectangle({
       x: 0,
       y: 50,
       width: 100,
       height: 50,
       color: 0xff0000,
-      lineWidth: 5,
+      borderThickness: 5,
       radius: 10,
     }),
     anim,

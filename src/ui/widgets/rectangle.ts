@@ -1,11 +1,13 @@
-import { Builder, Widget } from "../widget"
+import { Builder, Widget } from "./widget"
 
-export class OutlinedRectangle extends Widget<OutlinedRectangle.Configuration> {
+export class Rectangle extends Widget<Rectangle.Configuration> {
     build(builder: Builder = hmUI) {
-        this.widget = builder.createWidget(hmUI.widget.STROKE_RECT, this.toNative(this.config))
+        const widgetId = this.config.filled ? hmUI.widget.FILL_RECT : hmUI.widget.STROKE_RECT
+
+        this.widget = builder.createWidget(widgetId, this.toNative(this.config))
     }
 
-    toNative(config: OutlinedRectangle.Configuration): Record<string, any> {
+    toNative(config: Rectangle.Configuration): Record<string, any> {
         return {
             x: config.x,
             y: config.y,
@@ -13,21 +15,22 @@ export class OutlinedRectangle extends Widget<OutlinedRectangle.Configuration> {
             h: config.height,
             color: config.color,
             radius: config.radius,
-            line_width: config.lineWidth,
             angle: config.angle,
+            line_width: config.borderThickness,
         }
     }
 }
 
-export namespace OutlinedRectangle {
+export namespace Rectangle {
     export interface Configuration {
         x: number,
         y: number,
         width: number,
         height: number,
         color: number,
+        filled?: boolean,
         radius?: number,
-        lineWidth?: number,
         angle?: number,
+        borderThickness?: number,
     }
 }
