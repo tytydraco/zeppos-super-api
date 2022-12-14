@@ -1,10 +1,11 @@
+import { Cancellable } from "../../cancellable"
 import { Group } from "./group"
 
 export interface Builder {
     createWidget(widgetType: number, options: HmWearableProgram.DeviceSide.HmUI.HmUIWidgetOptions): HmWearableProgram.DeviceSide.HmUI.IHmUIWidget
 }
 
-export abstract class Widget<T extends Widget.Configuration> {
+export abstract class Widget<T> {
     widget: HmWearableProgram.DeviceSide.HmUI.IHmUIWidget = null
 
     constructor(public readonly config: T) { }
@@ -27,11 +28,44 @@ export abstract class Widget<T extends Widget.Configuration> {
         hmUI.deleteWidget(this.widget)
     }
 
-    protected abstract toNative(config: T): Record<string, any>
-}
+    onDrag(callback: (x: number, y: number) => void): Cancellable {
+        const innerCallback = (info) => {
+            callback(info.x, info.y)
+        }
 
-export namespace Widget {
-    export interface Configuration {
-
+        this.widget.addEventListener(hmUI.event.MOVE, innerCallback)
+        return {
+            cancel() {
+                this.widget.removeEventListener(hmUI.event.MOVE, innerCallback)
+            },
+        }
     }
+
+    onPress(callback: (x: number, y: number) => void): Cancellable {
+        const innerCallback = (info) => {
+            callback(info.x, info.y)
+        }
+
+        this.widget.addEventListener(hmUI.event.CLICK_DOWN, innerCallback)
+        return {
+            cancel() {
+                this.widget.removeEventListener(hmUI.event.CLICK_DOWN, innerCallback)
+            },
+        }
+    }
+
+    onRelease(callback: (x: number, y: number) => void): Cancellable {
+        const innerCallback = (info) => {
+            callback(info.x, info.y)
+        }
+
+        this.widget.addEventListener(hmUI.event.CLICK_UP, innerCallback)
+        return {
+            cancel() {
+                this.widget.removeEventListener(hmUI.event.CLICK_UP, innerCallback)
+            },
+        }
+    }
+
+    protected abstract toNative(config: T): Record<string, any>
 }

@@ -21,6 +21,16 @@ const date = new DatePicker({
   fontSize: 1,
 })
 
+const r = new Rectangle({
+  x: 0,
+  y: 0,
+  width: 100,
+  height: 50,
+  color: 0xff0000,
+  radius: 10,
+  filled: true,
+})
+
 new View({
   onInitialize() {
     debug('View init')
@@ -29,20 +39,20 @@ new View({
   },
   onBuild() {
     debug('View build')
+
+    r.widget.addEventListener(hmUI.event.MOVE_IN, function (info) {
+      debug(JSON.stringify(info))
+    })
+
+    r.widget.addEventListener(hmUI.event.MOVE_OUT, function (info) {
+      debug(JSON.stringify(info))
+    })
   },
   onDestroy() {
     debug('View destroy')
   },
   children: [
-    new Rectangle({
-      x: 0,
-      y: 0,
-      width: 100,
-      height: 50,
-      color: 0xff0000,
-      radius: 10,
-      filled: true,
-    }),
+    r,
     new Rectangle({
       x: 0,
       y: 50,
