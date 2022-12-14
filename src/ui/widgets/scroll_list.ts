@@ -1,6 +1,6 @@
 import { Builder, Widget } from "./widget"
 
-export class TextScrollList extends Widget<TextScrollList.Configuration> {
+export class ScrollList extends Widget<ScrollList.Configuration> {
     private getDataArrayForItems(items: Array<string>): Array<{ value: string }> {
         return items.map((item) => ({ value: item }))
     }
@@ -9,7 +9,7 @@ export class TextScrollList extends Widget<TextScrollList.Configuration> {
         this.widget = builder.createWidget(hmUI.widget.SCROLL_LIST, this.toNative(this.config))
     }
 
-    toNative(config: TextScrollList.Configuration): Record<string, any> {
+    toNative(config: ScrollList.Configuration): Record<string, any> {
         return {
             x: config.x,
             y: config.y,
@@ -20,16 +20,24 @@ export class TextScrollList extends Widget<TextScrollList.Configuration> {
                 item_height: config.itemHeight,
                 item_bg_color: config.itemBackgroundColor,
                 item_bg_radius: config.itemBackgroundRadius,
-                text_view: [{
+                text_view: (config.type == ScrollList.Type.Text) ? [{
                     x: config.itemConfig.x,
                     y: config.itemConfig.y,
                     w: config.itemConfig.width,
                     h: config.itemConfig.height,
-                    color: config.itemConfig.color,
+                    color: config.itemConfig.textColor,
                     text_size: config.itemConfig.fontSize,
                     key: 'value',
-                }],
-                text_view_count: 1,
+                }] : undefined,
+                text_view_count: (config.type == ScrollList.Type.Text) ? 1 : 0,
+                image_view: (config.type == ScrollList.Type.Image) ? [{
+                    x: config.itemConfig.x,
+                    y: config.itemConfig.y,
+                    w: config.itemConfig.width,
+                    h: config.itemConfig.height,
+                    key: 'value',
+                }] : undefined,
+                image_view_count: (config.type == ScrollList.Type.Image) ? 1 : 0,
             },
             item_config_count: 1,
             data_array: this.getDataArrayForItems(config.items),
@@ -47,18 +55,25 @@ export class TextScrollList extends Widget<TextScrollList.Configuration> {
     }
 }
 
-export namespace TextScrollList {
+export namespace ScrollList {
+    export enum Type {
+        Text,
+        Image,
+    }
+
     export interface ItemConfig {
         x: number,
         y: number,
         width: number,
         height: number,
-        text: string,
-        color?: number,
+        text?: string,
+        textColor?: number,
         fontSize?: number,
     }
 
-    export interface Configuration extends Widget.Configuration {
+    export interface Configuration {
+        type: Type,
+
         x: number,
         y: number,
         width: number,

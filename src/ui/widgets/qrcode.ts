@@ -17,7 +17,7 @@ export class QRCode extends Widget<QRCode.Configuration> {
 }
 
 export namespace QRCode {
-    export interface Configuration extends Widget.Configuration {
+    export interface Configuration {
         x: number,
         y: number,
         width: number,

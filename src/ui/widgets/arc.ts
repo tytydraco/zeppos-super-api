@@ -21,7 +21,7 @@ export class Arc extends Widget<Arc.Configuration> {
 }
 
 export namespace Arc {
-    export interface Configuration extends Widget.Configuration {
+    export interface Configuration {
         x: number,
         y: number,
         width: number,

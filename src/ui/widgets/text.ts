@@ -40,7 +40,7 @@ export namespace Text {
         CharacterWrap = hmUI.text_style.CHAR_WRAP,
     }
 
-    export interface Configuration extends Widget.Configuration {
+    export interface Configuration {
         x: number,
         y: number,
         width: number,
