@@ -8,8 +8,7 @@
         "declarationDir": "./types",
         "allowJs": true,
         "strict": true,
-        "esModuleInterop": true,
-        "noImplicitAny": false,
+        "esModuleInterop": true
     },
     "include": [
         "src/**/*.ts"
