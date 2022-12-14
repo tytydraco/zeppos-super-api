@@ -7,7 +7,7 @@ export namespace Device {
         screenShape: Screen.Shape,
         deviceName: string,
         physicalKeyCount: number,
-        deviceCodeId: number,
+        deviceCode: number,
     }
 
     export enum SceneType {
@@ -25,7 +25,7 @@ export namespace Device {
             screenShape: deviceInfo.screenShape,
             deviceName: deviceInfo.deviceName,
             physicalKeyCount: deviceInfo.keyNumber,
-            deviceCodeId: deviceInfo.deviceSource,
+            deviceCode: deviceInfo.deviceSource,
         }
     }
 
