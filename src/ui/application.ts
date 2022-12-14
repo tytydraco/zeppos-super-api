@@ -1,10 +1,10 @@
-export class Application {
-    private static instance: Application
+export class Program {
+    private static instance: Program
 
     state: Record<string, any> = {}
 
-    constructor(config: Application.Configuration) {
-        if (Application.instance != null)
+    constructor(config: Program.Configuration) {
+        if (Program.instance != null)
             return
 
         App({
@@ -15,7 +15,7 @@ export class Application {
     }
 }
 
-export namespace Application {
+export namespace Program {
     export interface Configuration {
         onCreate?: (parameters?: string) => void,
         onDestroy?: () => void,

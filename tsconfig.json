@@ -7,11 +7,9 @@
         "outDir": "./lib",
         "declarationDir": "./types",
         "allowJs": true,
-        "strict": false,
+        "strict": true,
         "esModuleInterop": true,
-        "typeRoots": [
-            "./node_modules/zeppos-device-types-v1"
-        ],
+        "noImplicitAny": false,
     },
     "include": [
         "src/**/*.ts"

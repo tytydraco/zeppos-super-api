@@ -1,5 +1,4 @@
 import { Cancellable } from "../../cancellable"
-import { Group } from "./group"
 
 export interface Builder {
     createWidget(widgetType: number, options: HmWearableProgram.DeviceSide.HmUI.HmUIWidgetOptions): HmWearableProgram.DeviceSide.HmUI.IHmUIWidget

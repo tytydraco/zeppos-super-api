@@ -9,8 +9,5 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "tytydraco",
-  "license": "BSD-2-Clause",
-  "devDependencies": {
-    "zeppos-device-types-v1": "^1.0.0"
-  }
+  "license": "BSD-2-Clause"
 }

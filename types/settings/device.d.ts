@@ -6,7 +6,7 @@ export declare namespace Device {
         screenShape: Screen.Shape;
         deviceName: string;
         physicalKeyCount: number;
-        deviceCodeId: number;
+        deviceCode: number;
     }
     enum SceneType {
         App,

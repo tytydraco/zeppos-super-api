@@ -1,5 +1,4 @@
 export * from './app';
-export * from './bluetooth';
 export * from './fs';
 export * from './sensors';
 export * from './settings';

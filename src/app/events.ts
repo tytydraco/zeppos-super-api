@@ -46,7 +46,7 @@ export namespace Events {
     }
 
     export function onCrownTurn(callback: (degree: number) => boolean): Cancellable {
-        hmApp.registerSpinEvent((_, degree) => callback(degree))
+        hmApp.registerSpinEvent((_: any, degree: number) => callback(degree))
 
         return {
             cancel() {
