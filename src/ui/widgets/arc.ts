@@ -9,13 +9,13 @@ export class Arc extends Widget<Arc.Configuration> {
         return {
             x: config.x,
             y: config.y,
-            w: config.width,
-            h: config.height,
+            w: config.width ?? config.radius * 2,
+            h: config.height ?? config.radius * 2,
             radius: config.radius,
-            start_angle: config.startAngle,
-            end_angle: config.endAngle,
-            line_width: config.lineWidth,
-            color: config.color,
+            start_angle: config.startAngle ?? 0,
+            end_angle: config.endAngle ?? 0,
+            line_width: config.lineWidth ?? 1,
+            color: config.color ?? 0xffffff,
         }
     }
 }
@@ -24,12 +24,13 @@ export namespace Arc {
     export interface Configuration {
         x: number,
         y: number,
-        width: number,
-        height: number,
         radius: number,
-        startAngle: number,
-        endAngle: number,
-        lineWidth: number,
-        color: number,
+
+        width?: number,
+        height?: number,
+        startAngle?: number,
+        endAngle?: number,
+        lineWidth?: number,
+        color?: number,
     }
 }

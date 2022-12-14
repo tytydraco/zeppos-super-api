@@ -11,7 +11,7 @@ export class Button extends Widget<Button.Configuration> {
             y: config.y,
             w: config.width,
             h: config.height,
-            text: config.text,
+            text: config.text ?? '',
             color: config.textColor,
             text_size: config.fontSize,
             press_src: config.pressedImagePath,
@@ -30,8 +30,8 @@ export namespace Button {
         y: number,
         width: number,
         height: number,
-        text: number,
 
+        text?: number,
         imagePath?: string,
         pressedImagePath?: string,
 

@@ -13,7 +13,7 @@ export class Rectangle extends Widget<Rectangle.Configuration> {
             y: config.y,
             w: config.width,
             h: config.height,
-            color: config.color,
+            color: config.color ?? 0xffffff,
             radius: config.radius,
             angle: config.angle,
             line_width: config.borderThickness,
@@ -27,7 +27,8 @@ export namespace Rectangle {
         y: number,
         width: number,
         height: number,
-        color: number,
+
+        color?: number,
         filled?: boolean,
         radius?: number,
         angle?: number,

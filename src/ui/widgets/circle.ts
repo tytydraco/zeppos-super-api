@@ -10,7 +10,7 @@ export class Circle extends Widget<Circle.Configuration> {
             center_x: config.x + config.radius,
             center_y: config.y + config.radius,
             radius: config.radius,
-            color: config.color,
+            color: config.color ?? 0xffffff,
             alpha: config.alpha,
         }
     }
@@ -21,8 +21,8 @@ export namespace Circle {
         x: number,
         y: number,
         radius: number,
-        color: number,
 
+        color?: number,
         alpha?: number,
     }
 }
