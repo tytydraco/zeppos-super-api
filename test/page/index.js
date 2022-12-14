@@ -1,24 +1,16 @@
-import { View, Rectangle, debug, Animation, Button, CheckBoxGroup, StateButton, Circle, DatePicker, Clock, Text, Scroll } from "zeppos-super-api";
+import { View, Rectangle, debug, Animation, Button, CheckBoxGroup, StateButton, Circle, DatePicker, Clock, Text, Scroll, Stack } from "zeppos-super-api";
 
 let currentDate = new Date();
 
 const anim = new Animation({
-  x: 0,
-  y: 100,
+  x: 150,
+  y: 50,
   path: 'pikachu/',
   prefix: 'frame',
   imageCount: 2,
   framesPerSecond: 4,
   extension: 'png',
   autoStart: true,
-})
-
-const date = new DatePicker({
-  x: 0,
-  y: 150,
-  width: 100,
-  initialDate: currentDate,
-  fontSize: 1,
 })
 
 const r = new Rectangle({
@@ -52,71 +44,49 @@ new View({
     debug('View destroy')
   },
   children: [
-    r,
-    new Rectangle({
-      x: 0,
-      y: 50,
-      width: 100,
-      height: 50,
-      color: 0xff0000,
-      borderThickness: 5,
-      radius: 10,
-    }),
     anim,
-    new Button({
+    new Stack({
+      direction: Stack.Direction.Vertical,
       x: 0,
-      y: 150,
-      width: 100,
-      height: 50,
-      text: 'pause/play anim',
-      color: 0x00ff00,
-      pressedColor: 0x00aa00,
-      fontSize: 24,
-      radius: 10,
-      textColor: 0xffffff,
-      onClick() {
-        console.log(JSON.stringify(date.widget.getProperty(hmUI.prop.MORE, {})));
-        console.log(date.getDate().toISOString());
-
-        const curStatus = anim.getStatus()
-        if (curStatus == Animation.Status.Running) {
-          anim.pause()
-        } else {
-          anim.resume()
-        }
-      },
-    }),
-    new CheckBoxGroup({
-      x: 0,
-      y: 200,
-      width: 100,
-      height: 50,
-      imagePath: 'pikachu/frame_0.png',
-      selectedImagePath: 'pikachu/frame_1.png',
-      buttons: [
-        new StateButton({
+      y: 0,
+      children: [
+        r,
+        new Rectangle({
           x: 0,
           y: 0,
-          width: 50,
-          height: 25,
+          width: 100,
+          height: 50,
+          color: 0xff0000,
+          borderThickness: 5,
+          radius: 10,
         }),
-        new StateButton({
+        new Button({
+          x: 20,
+          y: 20,
+          width: 100,
+          height: 50,
+          text: 'pause/play anim',
+          color: 0x00ff00,
+          pressedColor: 0x00aa00,
+          fontSize: 24,
+          radius: 10,
+          textColor: 0xffffff,
+          onClick() {
+            const curStatus = anim.getStatus()
+            if (curStatus == Animation.Status.Running) {
+              anim.pause()
+            } else {
+              anim.resume()
+            }
+          },
+        }),
+        new Circle({
           x: 0,
-          y: 25,
-          width: 50,
-          height: 25,
+          y: 20,
+          radius: 25,
+          color: 0xaaaaff,
         }),
-      ],
-      onClick(index, checked) {
-        debug(`button ${index} is ${checked}`)
-      }
-    }),
-    new Circle({
-      x: 0,
-      y: 250,
-      radius: 25,
-      color: 0xaaaaff,
-    }),
-    date,
+      ]
+    })
   ]
 })

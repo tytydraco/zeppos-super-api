@@ -1,6 +1,6 @@
-import { Application, Scroll, StatusBar } from "zeppos-super-api";
+import { Program, Scroll, StatusBar } from "zeppos-super-api";
 
-new Application({
+new Program({
   onCreate() {
     StatusBar.hide()
     Scroll.enable()

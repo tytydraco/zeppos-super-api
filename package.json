@@ -1,5 +1,5 @@
 {
-  "name": "zepp-improved-api",
+  "name": "zeppos-super-api",
   "version": "1.0.0",
   "description": "A library that streamlines calls to Zepp devices.",
   "main": "lib/index",

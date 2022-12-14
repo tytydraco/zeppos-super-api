@@ -28,7 +28,7 @@ export abstract class Widget<T> {
     }
 
     onDrag(callback: (x: number, y: number) => void): Cancellable {
-        const innerCallback = (info) => {
+        const innerCallback = (info: { x: number, y: number }) => {
             callback(info.x, info.y)
         }
 
@@ -41,7 +41,7 @@ export abstract class Widget<T> {
     }
 
     onPress(callback: (x: number, y: number) => void): Cancellable {
-        const innerCallback = (info) => {
+        const innerCallback = (info: { x: number, y: number }) => {
             callback(info.x, info.y)
         }
 
@@ -54,7 +54,7 @@ export abstract class Widget<T> {
     }
 
     onRelease(callback: (x: number, y: number) => void): Cancellable {
-        const innerCallback = (info) => {
+        const innerCallback = (info: { x: number, y: number }) => {
             callback(info.x, info.y)
         }
 
