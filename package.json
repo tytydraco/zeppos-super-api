@@ -1,6 +1,6 @@
 {
   "name": "zeppos-super-api",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A library that streamlines calls to Zepp devices.",
   "main": "lib/index",
   "module": "lib/index.js",
