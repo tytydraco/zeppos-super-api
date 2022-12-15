@@ -30,6 +30,6 @@ export declare namespace Text {
         verticalAlignment?: Alignment;
         lineSpacing?: number;
         characterSpacing?: number;
-        overflow: Overflow;
+        overflow?: Overflow;
     }
 }
