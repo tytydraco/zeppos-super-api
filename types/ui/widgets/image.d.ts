@@ -1,6 +1,6 @@
-import { Builder, Widget } from "./widget";
+import { Widget } from "./widget";
 export declare class Image extends Widget<Image.Configuration> {
-    build(builder?: Builder): void;
+    build(builder?: Internal): void;
     toNative(config: Image.Configuration): Record<string, any>;
 }
 export declare namespace Image {

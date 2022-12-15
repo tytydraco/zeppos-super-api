@@ -1,7 +1,7 @@
-import { Builder, Widget } from "./widget";
+import { Widget } from "./widget";
 export declare class ScrollList extends Widget<ScrollList.Configuration> {
     private getDataArrayForItems;
-    build(builder?: Builder): void;
+    build(builder?: Internal): void;
     toNative(config: ScrollList.Configuration): Record<string, any>;
     updateItems(items: Array<string>): void;
 }

@@ -1,7 +1,7 @@
-import { Builder, Widget } from "./widget"
+import { Widget } from "./widget"
 
 export class Circle extends Widget<Circle.Configuration> {
-    build(builder: Builder = hmUI): void {
+    build(builder = hmUI): void {
         this.widget = builder.createWidget(hmUI.widget.CIRCLE, this.toNative(this.config))
     }
 

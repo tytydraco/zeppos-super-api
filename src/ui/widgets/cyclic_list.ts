@@ -1,8 +1,8 @@
 import { Text } from "./text"
-import { Builder, Widget } from "./widget"
+import { Widget } from "./widget"
 
 export class CyclicList extends Widget<CyclicList.Configuration> {
-    build(builder: Builder = hmUI): void {
+    build(builder = hmUI): void {
         const widgetId = this.config.type == CyclicList.Type.Text ? hmUI.widget.CYCLE_IMAGE_TEXT_LIST : hmUI.widget.CYCLE_LIST
 
         this.widget = builder.createWidget(widgetId, this.toNative(this.config))
@@ -26,7 +26,7 @@ export class CyclicList extends Widget<CyclicList.Configuration> {
             data_size: config.items.length,
             item_text_align_h: config.horizontalTextAlignment,
             item_text_align_v: config.verticalTextAlignment,
-            item_click_func: (_: any, index: number) => config.onClick(index),
+            item_click_func: (config.onClick !== undefined) ? ((_: any, index: number) => config.onClick!(index)) : undefined,
         }
     }
 

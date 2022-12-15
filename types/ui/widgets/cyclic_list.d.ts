@@ -1,7 +1,7 @@
 import { Text } from "./text";
-import { Builder, Widget } from "./widget";
+import { Widget } from "./widget";
 export declare class CyclicList extends Widget<CyclicList.Configuration> {
-    build(builder?: Builder): void;
+    build(builder?: Internal): void;
     private getDataArrayForItems;
     toNative(config: CyclicList.Configuration): Record<string, any>;
     setIndex(index: number): void;

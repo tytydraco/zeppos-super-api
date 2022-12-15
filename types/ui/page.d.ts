@@ -1,5 +1,6 @@
 import { Widget } from "./widgets";
 export declare class View {
+    readonly config: View.Configuration;
     state: Record<string, any>;
     constructor(config: View.Configuration);
 }

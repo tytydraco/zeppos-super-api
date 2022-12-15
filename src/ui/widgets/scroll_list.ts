@@ -1,11 +1,11 @@
-import { Builder, Widget } from "./widget"
+import { Widget } from "./widget"
 
 export class ScrollList extends Widget<ScrollList.Configuration> {
     private getDataArrayForItems(items: Array<string>): Array<{ value: string }> {
         return items.map((item) => ({ value: item }))
     }
 
-    build(builder: Builder = hmUI): void {
+    build(builder = hmUI): void {
         this.widget = builder.createWidget(hmUI.widget.SCROLL_LIST, this.toNative(this.config))
     }
 
@@ -42,7 +42,7 @@ export class ScrollList extends Widget<ScrollList.Configuration> {
             item_config_count: 1,
             data_array: this.getDataArrayForItems(config.items),
             data_count: config.items.length,
-            item_click_func: (_: any, index: number) => config.onClick(index),
+            item_click_func: (config.onClick !== undefined) ? ((_: any, index: number) => config.onClick!(index)) : undefined,
             on_page: config.resetPositionOnUpdate ? 0 : 1,
         }
     }

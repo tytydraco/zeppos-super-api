@@ -1,6 +1,6 @@
-import { Builder, Widget } from "./widget";
+import { Widget } from "./widget";
 export declare class Text extends Widget<Text.Configuration> {
-    build(builder?: Builder): void;
+    build(builder?: Internal): void;
     toNative(config: Text.Configuration): Record<string, any>;
 }
 export declare namespace Text {

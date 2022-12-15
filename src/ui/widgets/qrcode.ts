@@ -1,7 +1,7 @@
-import { Builder, Widget } from "./widget"
+import { Widget } from "./widget"
 
 export class QRCode extends Widget<QRCode.Configuration> {
-    build(builder: Builder = hmUI): void {
+    build(builder = hmUI): void {
         this.widget = builder.createWidget(hmUI.widget.QRCODE, this.toNative(this.config))
     }
 

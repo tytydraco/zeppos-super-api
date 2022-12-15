@@ -1,6 +1,6 @@
-import { Builder, Widget } from "./widget";
+import { Widget } from "./widget";
 export declare class Rectangle extends Widget<Rectangle.Configuration> {
-    build(builder?: Builder): void;
+    build(builder?: Internal): void;
     toNative(config: Rectangle.Configuration): Record<string, any>;
 }
 export declare namespace Rectangle {

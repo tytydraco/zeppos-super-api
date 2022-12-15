@@ -1,10 +1,13 @@
-import { Builder, Widget } from "./widget"
+import { Widget } from "./widget"
 
 export class Group extends Widget<Group.Configuration> {
-    build(builder: Builder = hmUI): void {
+    build(builder = hmUI): void {
         this.widget = builder.createWidget(hmUI.widget.GROUP, this.toNative(this.config))
-        for (const child of this.config.children) {
-            child.build(this.widget)
+
+        if (this.config.children !== undefined) {
+            for (const child of this.config.children) {
+                child.build(this.widget)
+            }
         }
     }
 
@@ -24,6 +27,6 @@ export namespace Group {
         y: number,
         width: number,
         height: number,
-        children: Array<Widget<any>>,
+        children?: Array<Widget<any>>,
     }
 }

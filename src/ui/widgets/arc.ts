@@ -1,7 +1,7 @@
-import { Builder, Widget } from "./widget"
+import { Widget } from "./widget"
 
 export class Arc extends Widget<Arc.Configuration> {
-    build(builder: Builder = hmUI): void {
+    build(builder = hmUI): void {
         this.widget = builder.createWidget(hmUI.widget.ARC, this.toNative(this.config))
     }
 

@@ -1,6 +1,6 @@
-import { Builder, Widget } from "./widget";
+import { Widget } from "./widget";
 export declare class Animation extends Widget<Animation.Configuration> {
-    build(builder?: Builder): void;
+    build(builder?: Internal): void;
     toNative(config: Animation.Configuration): Record<string, any>;
     start(): void;
     pause(): void;

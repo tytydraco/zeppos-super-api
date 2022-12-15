@@ -1,7 +1,7 @@
-import { Builder, Widget } from "./widget"
+import { Widget } from "./widget"
 
 export class Text extends Widget<Text.Configuration> {
-    build(builder: Builder = hmUI): void {
+    build(builder = hmUI): void {
         this.widget = builder.createWidget(hmUI.widget.TEXT, this.toNative(this.config))
     }
 

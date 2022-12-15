@@ -1,6 +1,6 @@
-import { Builder, Widget } from "./widget";
+import { Widget } from "./widget";
 export declare class Arc extends Widget<Arc.Configuration> {
-    build(builder?: Builder): void;
+    build(builder?: Internal): void;
     toNative(config: Arc.Configuration): Record<string, any>;
 }
 export declare namespace Arc {

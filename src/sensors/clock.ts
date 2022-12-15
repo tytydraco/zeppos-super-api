@@ -80,7 +80,7 @@ export class Clock {
         this.sensor.addEventListener(hmSensor.event.MINUTEEND, callback)
 
         return {
-            cancel() {
+            cancel: () => {
                 this.sensor.removeEventListener(hmSensor.event.MINUTEEND, callback)
             }
         }
@@ -90,7 +90,7 @@ export class Clock {
         this.sensor.addEventListener(hmSensor.event.DAYCHANGE, callback)
 
         return {
-            cancel() {
+            cancel: () => {
                 this.sensor.removeEventListener(hmSensor.event.DAYCHANGE, callback)
             }
         }

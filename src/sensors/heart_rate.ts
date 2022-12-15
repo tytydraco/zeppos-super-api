@@ -19,7 +19,7 @@ export class HeartRate {
         this.sensor.addEventListener(hmSensor.event.CURRENT, callback)
 
         return {
-            cancel() {
+            cancel: () => {
                 this.sensor.removeEventListener(hmSensor.event.CURRENT, callback)
             }
         }
@@ -29,7 +29,7 @@ export class HeartRate {
         this.sensor.addEventListener(hmSensor.event.LAST, callback)
 
         return {
-            cancel() {
+            cancel: () => {
                 this.sensor.removeEventListener(hmSensor.event.LAST, callback)
             }
         }

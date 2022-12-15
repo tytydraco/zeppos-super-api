@@ -11,7 +11,7 @@ export class Wearing {
         this.sensor.addEventListener(hmSensor.event.CHANGE, callback)
 
         return {
-            cancel() {
+            cancel: () => {
                 this.sensor.removeEventListener(hmSensor.event.CHANGE, callback)
             }
         }

@@ -1,7 +1,7 @@
-import { Builder, Widget } from "./widget"
+import { Widget } from "./widget"
 
 export class Animation extends Widget<Animation.Configuration> {
-    build(builder: Builder = hmUI): void {
+    build(builder = hmUI): void {
         this.widget = builder.createWidget(hmUI.widget.IMG_ANIM, this.toNative(this.config))
 
         if (this.config.autoStart) {
@@ -41,14 +41,13 @@ export class Animation extends Widget<Animation.Configuration> {
     }
 
     getStatus(): Animation.Status {
-        if (this.widget.getProperty(hmUI.prop.ANIM_IS_RUNINNG))
+        if (this.widget.getProperty(hmUI.prop.ANIM_IS_RUNINNG)) {
             return Animation.Status.Running
-
-        if (this.widget.getProperty(hmUI.prop.ANIM_IS_PAUSE))
+        } else if (this.widget.getProperty(hmUI.prop.ANIM_IS_PAUSE)) {
             return Animation.Status.Paused
-
-        if (this.widget.getProperty(hmUI.prop.ANIM_IS_STOP))
+        } else {
             return Animation.Status.Stopped
+        }
     }
 }
 

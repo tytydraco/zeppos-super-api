@@ -29,7 +29,7 @@ export namespace Events {
         hmApp.registerGestureEvent(callback)
 
         return {
-            cancel() {
+            cancel: () => {
                 hmApp.unregisterGestureEvent()
             }
         }
@@ -39,7 +39,7 @@ export namespace Events {
         hmApp.registerKeyEvent(callback)
 
         return {
-            cancel() {
+            cancel: () => {
                 hmApp.unregisterKeyEvent()
             }
         }
@@ -49,7 +49,7 @@ export namespace Events {
         hmApp.registerSpinEvent((_: any, degree: number) => callback(degree))
 
         return {
-            cancel() {
+            cancel: () => {
                 hmApp.unregisterSpinEvent()
             }
         }

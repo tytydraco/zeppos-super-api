@@ -1,7 +1,7 @@
-import { Builder, Widget } from "./widget"
+import { Widget } from "./widget"
 
 export class Rectangle extends Widget<Rectangle.Configuration> {
-    build(builder: Builder = hmUI) {
+    build(builder = hmUI) {
         const widgetId = this.config.filled ? hmUI.widget.FILL_RECT : hmUI.widget.STROKE_RECT
 
         this.widget = builder.createWidget(widgetId, this.toNative(this.config))

@@ -1,6 +1,6 @@
-import { Builder, Widget } from "./widget";
+import { Widget } from "./widget";
 export declare class Group extends Widget<Group.Configuration> {
-    build(builder?: Builder): void;
+    build(builder?: Internal): void;
     toNative(config: Group.Configuration): Record<string, any>;
 }
 export declare namespace Group {
@@ -9,6 +9,6 @@ export declare namespace Group {
         y: number;
         width: number;
         height: number;
-        children: Array<Widget<any>>;
+        children?: Array<Widget<any>>;
     }
 }

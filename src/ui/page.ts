@@ -3,15 +3,17 @@ import { Widget } from "./widgets"
 export class View {
     state: Record<string, any> = {}
 
-    constructor(config: View.Configuration) {
+    constructor(public readonly config: View.Configuration) {
         Page({
             onInit: config.onInitialize,
             build() {
-                for (const child of config.children) {
-                    child.build(hmUI)
+                if (config.children !== undefined) {
+                    for (const child of config.children) {
+                        child.build(hmUI)
+                    }
                 }
 
-                config?.onBuild()
+                config?.onBuild?.()
             },
             onDestroy: config.onDestroy,
             data: this.state,

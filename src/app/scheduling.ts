@@ -5,13 +5,13 @@ export namespace Scheduling {
         const alarmId = hmApp.alarmNew({
             appId: appId,
             url: pagePath,
-            date: date.getTime() / 1000,
-            delay: delayMilliseconds / 1000,
+            date: (date !== undefined) ? (date.getTime() / 1000) : undefined,
+            delay: (delayMilliseconds !== undefined) ? (delayMilliseconds / 1000) : undefined,
             param: createParameters,
         })
 
         return {
-            cancel() {
+            cancel: () => {
                 hmApp.alarmCancel(alarmId)
             }
         }
@@ -21,7 +21,7 @@ export namespace Scheduling {
         const timerId = timer.createTimer(delayMilliseconds, repeatMilliseconds, callback, null)
 
         return {
-            cancel() {
+            cancel: () => {
                 timer.stopTimer(timerId)
             }
         }

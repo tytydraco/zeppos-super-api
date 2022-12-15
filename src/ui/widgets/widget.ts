@@ -1,15 +1,11 @@
 import { Cancellable } from "../../cancellable"
 
-export interface Builder {
-    createWidget(widgetType: number, options: HmWearableProgram.DeviceSide.HmUI.HmUIWidgetOptions): HmWearableProgram.DeviceSide.HmUI.IHmUIWidget
-}
-
 export abstract class Widget<T> {
-    widget: HmWearableProgram.DeviceSide.HmUI.IHmUIWidget = null
+    widget!: Internal
 
     constructor(public readonly config: T) { }
 
-    abstract build(builder: Builder): void
+    abstract build(builder: Internal): void
 
     update(config: T) {
         this.widget.setProperty(hmUI.prop.MORE, this.toNative(config))
@@ -34,7 +30,7 @@ export abstract class Widget<T> {
 
         this.widget.addEventListener(hmUI.event.MOVE, innerCallback)
         return {
-            cancel() {
+            cancel: () => {
                 this.widget.removeEventListener(hmUI.event.MOVE, innerCallback)
             },
         }
@@ -47,7 +43,7 @@ export abstract class Widget<T> {
 
         this.widget.addEventListener(hmUI.event.CLICK_DOWN, innerCallback)
         return {
-            cancel() {
+            cancel: () => {
                 this.widget.removeEventListener(hmUI.event.CLICK_DOWN, innerCallback)
             },
         }
@@ -60,7 +56,7 @@ export abstract class Widget<T> {
 
         this.widget.addEventListener(hmUI.event.CLICK_UP, innerCallback)
         return {
-            cancel() {
+            cancel: () => {
                 this.widget.removeEventListener(hmUI.event.CLICK_UP, innerCallback)
             },
         }

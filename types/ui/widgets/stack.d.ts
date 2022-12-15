@@ -1,6 +1,6 @@
-import { Builder, Widget } from "./widget";
+import { Widget } from "./widget";
 export declare class Stack extends Widget<Stack.Configuration> {
-    build(builder?: Builder): void;
+    build(builder?: Internal): void;
     private getTotalSize;
     private getChildSize;
     private getChildOffset;

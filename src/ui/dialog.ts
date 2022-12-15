@@ -1,5 +1,5 @@
 export class Dialog {
-    private dialog: HmWearableProgram.DeviceSide.HmUI.IHmUIDialogType
+    private dialog: Internal
 
     private _isShowing: boolean
 

@@ -1,7 +1,7 @@
-import { Builder, Widget } from "./widget"
+import { Widget } from "./widget"
 
 export class Stack extends Widget<Stack.Configuration> {
-    build(builder: Builder = hmUI): void {
+    build(builder = hmUI): void {
         /* Fit the size if user does not specify it. */
         if (this.config.direction == Stack.Direction.Vertical && this.config.height == null) {
             this.config.height = this.getTotalSize()
