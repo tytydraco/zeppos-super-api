@@ -13,7 +13,7 @@ export class Text extends Widget<Text.Configuration> {
             h: config.height,
             color: config.color,
             align_h: config.horizontalAlignment,
-            align_y: config.verticalAlignment,
+            align_v: config.verticalAlignment,
             text: config.text,
             text_size: config.fontSize,
             text_style: config.overflow ?? Text.Overflow.None,
