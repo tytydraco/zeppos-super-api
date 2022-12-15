@@ -16,7 +16,7 @@ export class Text extends Widget<Text.Configuration> {
             align_y: config.verticalAlignment,
             text: config.text,
             text_size: config.fontSize,
-            text_style: config.overflow,
+            text_style: config.overflow ?? Text.Overflow.None,
             line_space: config.lineSpacing,
             char_space: config.characterSpacing,
         }
@@ -53,6 +53,6 @@ export namespace Text {
         verticalAlignment?: Alignment,
         lineSpacing?: number,
         characterSpacing?: number,
-        overflow: Overflow,
+        overflow?: Overflow,
     }
 }
