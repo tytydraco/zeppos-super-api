@@ -4,6 +4,17 @@ import { Cancellable } from "../cancellable";
 export class Clock {
     private sensor = hmSensor.createSensor(hmSensor.id.TIME)
 
+    getDate(): Date {
+        return new Date(
+            this.getYear(),
+            this.getMonth() - 1,
+            this.getDay(),
+            this.getHour(),
+            this.getMinute(),
+            this.getSecond()
+        )
+    }
+
     getMillisecondsSinceEpoch(): number {
         return this.sensor.utc
     }

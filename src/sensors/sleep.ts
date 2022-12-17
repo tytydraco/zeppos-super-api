@@ -1,3 +1,5 @@
+import { Clock } from "./clock"
+
 export class Sleep {
     private sensor = hmSensor.createSensor(hmSensor.id.SLEEP)
 
@@ -16,7 +18,8 @@ export class Sleep {
         const sleepStageData: Array<any> = this.sensor.getSleepStageData()
 
         /* From the start of today. */
-        const startOfToday = new Date()
+        const clock = new Clock()
+        const startOfToday = new Date(clock.getDate().getTime())
         startOfToday.setHours(0, 0, 0, 0)
 
         return sleepStageData.map((data) => ({
@@ -38,7 +41,8 @@ export class Sleep {
         const basicInfo = this.sensor.getBasicInfo()
 
         /* From the start of today. */
-        const startOfToday = new Date()
+        const clock = new Clock()
+        const startOfToday = new Date(clock.getDate().getTime())
         startOfToday.setHours(0, 0, 0, 0)
 
         return {
