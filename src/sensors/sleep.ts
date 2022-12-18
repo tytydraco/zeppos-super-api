@@ -7,13 +7,6 @@ export class Sleep {
         this.sensor.updateInfo()
     }
 
-    private getDateAfterMinutes(date: Date, minutes: number): Date {
-        const newDate = new Date(date.getTime())
-        newDate.setMinutes(newDate.getMinutes() + minutes)
-
-        return newDate
-    }
-
     getSleepStages(): Array<Sleep.SleepStage> {
         const sleepStageData: Array<any> = this.sensor.getSleepStageData()
 
@@ -24,8 +17,8 @@ export class Sleep {
 
         return sleepStageData.map((data) => ({
             stage: data.model,
-            startTime: this.getDateAfterMinutes(startOfToday, data.start),
-            endTime: this.getDateAfterMinutes(startOfToday, data.end),
+            startMinutesFromMidnight: data.start,
+            endMinutesFromMidnight: data.end,
         }))
     }
 
@@ -48,8 +41,8 @@ export class Sleep {
         return {
             score: basicInfo.score,
             deepSleepMinutes: basicInfo.deepMin,
-            startTime: this.getDateAfterMinutes(startOfToday, basicInfo.startTime),
-            endTime: this.getDateAfterMinutes(startOfToday, basicInfo.endTime),
+            startMinutesFromMidnight: basicInfo.startTime,
+            endMinutesFromMidnight: basicInfo.endTime,
         }
     }
 }
@@ -64,14 +57,14 @@ export namespace Sleep {
 
     export interface SleepStage {
         stage: Stage,
-        startTime: Date,
-        endTime: Date,
+        startMinutesFromMidnight: number,
+        endMinutesFromMidnight: number,
     }
 
     export interface RecentInfo {
         score: number,
         deepSleepMinutes: number,
-        startTime: Date,
-        endTime: Date,
+        startMinutesFromMidnight: number,
+        endMinutesFromMidnight: number,
     }
 }

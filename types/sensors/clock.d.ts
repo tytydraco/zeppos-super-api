@@ -2,6 +2,7 @@ import { Locale } from "../settings/locale";
 import { Cancellable } from "../cancellable";
 export declare class Clock {
     private sensor;
+    getDate(): Date;
     getMillisecondsSinceEpoch(): number;
     getDay(): number;
     getMonth(): number;

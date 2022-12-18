@@ -1,7 +1,6 @@
 export declare class Sleep {
     private sensor;
     refresh(): void;
-    private getDateAfterMinutes;
     getSleepStages(): Array<Sleep.SleepStage>;
     getHeartRateByMinutes(): Array<number>;
     getTotalTime(): number;
@@ -16,13 +15,13 @@ export declare namespace Sleep {
     }
     interface SleepStage {
         stage: Stage;
-        startTime: Date;
-        endTime: Date;
+        startMinutesFromMidnight: number;
+        endMinutesFromMidnight: number;
     }
     interface RecentInfo {
         score: number;
         deepSleepMinutes: number;
-        startTime: Date;
-        endTime: Date;
+        startMinutesFromMidnight: number;
+        endMinutesFromMidnight: number;
     }
 }
